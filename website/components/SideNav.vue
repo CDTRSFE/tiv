@@ -89,15 +89,15 @@ export default {
         color: @link-color;
         background: #f0faff;
     }
-    &.active::after {
-        display: inline-block;
-        position: absolute;
-        content: '';
-        right: 0;
-        top: 0;
-        width: 2px;
-        height: 100%;
-        background: @theme-color;
-    }
+    // &.active::after {
+    //     display: inline-block;
+    //     position: absolute;
+    //     content: '';
+    //     right: 0;
+    //     top: 0;
+    //     width: 2px;
+    //     height: 100%;
+    //     background: @theme-color;
+    // }
 }
 </style>
