@@ -2,12 +2,14 @@
 
 NAME=$1
 
-FILE_PATH=$(cd "$(dirname "${BASH_SOURCE[0]}")/../src/packages" && pwd)
+SOURCE_PATH="$(dirname "${BASH_SOURCE[0]}")/../src/packages"
+cd "$SOURCE_PATH"
+FILE_PATH="$(pwd)"
 
 re="[[:space:]]+"
 
 if [ "$#" -ne 1 ] || [[ $NAME =~ $re ]] || [ "$NAME" == "" ]; then
-  echo "Usage: yarn gc \${name} with no space"
+  echo "Usage: npm run gen \${name} with no space"
   exit 1
 fi
 
