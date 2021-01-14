@@ -72,6 +72,7 @@ const config = {
     },
     devServer: {
         port: '8090',
+        hot: true,
     },
     resolve: {
         extensions: ['.ts', '.vue', '.js', '.json'],
