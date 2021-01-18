@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div class="list-scroll">
+        <p class="text">123</p>
         <slot></slot>
     </div>
 </template>
@@ -8,10 +9,16 @@ import { defineComponent } from 'vue';
 export default defineComponent({
     name: 'TListScroll',
     props: { },
-    setup(props) {
+    setup() {
         // init here
+        // console.log(props);
     },
 });
 </script>
-<style scoped>
+<style lang="less" scoped>
+.list-scroll {
+    .text {
+        background: #f1f1f1;
+    }
+}
 </style>

@@ -58,7 +58,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-@import "~@/styles/custom.less";
+@import "~@/styles/var.less";
 
 .side-nav {
     margin: 10px 0;

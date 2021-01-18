@@ -20,7 +20,7 @@ const chineseName = process.argv[3] || name;
 const resourcePath = path.resolve(__dirname, '../src/packages/' + name);
 const websitePath = path.resolve(__dirname, '../website');
 
-// todo
+// todo fs.lstatSync(path).isDirectory()
 try {
     fs.statSync(resourcePath).isDirectory();
     console.error('组件已存在\n\n');

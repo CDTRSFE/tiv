@@ -1,8 +1,11 @@
+import '../../styles/base.less';
 import { App } from 'vue';
-import TListScroll from '@/packages/list-scroll';
+import TListScroll from '../list-scroll/index';
+import SelectLabel from '../select-label/index';
 
 const components = [
     TListScroll,
+    SelectLabel,
 ];
 
 export default {
@@ -13,4 +16,5 @@ export default {
 
 export {
     TListScroll,
+    SelectLabel,
 };

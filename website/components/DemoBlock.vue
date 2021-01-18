@@ -66,7 +66,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-@import "~@/styles/custom.less";
+@import "~@/styles/var.less";
 .demo-block {
     border: 1px solid #f1f1f1;
     border-radius: 3px;

@@ -10,7 +10,7 @@ const isProd = process.env.NODE_ENV === 'production';
 const config = {
     mode: isProd ? 'production' : 'development',
     devtool: !isProd && 'eval-cheap-module-source-map',
-    entry: path.resolve(__dirname, './main.ts'),
+    entry: path.resolve(__dirname, './main.js'),
     output: {
         path: path.resolve(__dirname, '../website/dist'),
         publicPath: '/',
@@ -71,8 +71,13 @@ const config = {
         ],
     },
     devServer: {
-        port: '8090',
+        inline: true,
+        port: '8089',
         hot: true,
+        stats: 'minimal',
+        publicPath: '/',
+        contentBase: __dirname,
+        overlay: true,
     },
     resolve: {
         extensions: ['.ts', '.vue', '.js', '.json'],

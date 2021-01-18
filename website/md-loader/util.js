@@ -33,7 +33,7 @@ function compileComponent(source, script) {
         console.error(`\n Error compiling template: \n${pad(compiled.source)}\n${compiled.errors.map(err => ` -${err}`).join('\n')} \n`);
     }
 
-    const scriptTpl = (script || '{}')
+    const scriptTpl = (script || 'const obj = {}')
         .trim()
         .replace(/export\s+default/g, 'const obj =')
         .replace(/import ({.*}) from 'vue'/g, (s, s1) => `const ${s1} = Vue`);
