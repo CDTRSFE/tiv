@@ -7,6 +7,7 @@ module.exports = {
     },
     extends: [
         'eslint:recommended',
+        '@vue/standard',
         'plugin:vue/vue3-recommended',
         'tpconfig'
     ],

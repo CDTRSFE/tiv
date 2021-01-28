@@ -1,9 +1,11 @@
 const path = require('path');
-// const webpack = require('webpack');
+const webpack = require('webpack');
 const { VueLoaderPlugin } = require('vue-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -13,10 +15,11 @@ const config = {
     entry: path.resolve(__dirname, './main.js'),
     output: {
         path: path.resolve(__dirname, '../website/dist'),
-        publicPath: '/',
+        publicPath: isProd ? '/tiv/' : '/',
         filename: isProd ? '[name].[hash].js' : '[name].js',
     },
-    stats: 'verbose',
+    // 发生错误或有新编译时输出统计信息
+    stats: 'minimal',
     module: {
         rules: [
             // {
@@ -38,7 +41,18 @@ const config = {
             },
             {
                 test: /.(less|css)$/,
-                use: ['style-loader', 'css-loader', 'less-loader'],
+                use: [
+                    'style-loader',
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        // https://github.com/vuejs/vue-loader/issues/1742
+                        options: {
+                            esModule: false,
+                        },
+                    },
+                    'css-loader',
+                    'less-loader',
+                ],
             },
             {
                 test: /.md$/,
@@ -82,10 +96,19 @@ const config = {
     resolve: {
         extensions: ['.ts', '.vue', '.js', '.json'],
         alias: {
-            'vue': 'vue/dist/vue.esm-browser.js',
+            vue: 'vue/dist/vue.esm-browser.js',
             tiv: path.resolve(__dirname, '../src/packages/tiv'),
             '@': path.resolve(__dirname, '../src'),
             '*': path.resolve(__dirname, '../website'),
+        },
+    },
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new CssMinimizerPlugin(),
+        ],
+        splitChunks: {
+            chunks: 'all',
         },
     },
     plugins: [
@@ -94,14 +117,27 @@ const config = {
             template: './website/index.html',
             // filename: './index.html',
         }),
+        new webpack.DefinePlugin({
+            __VUE_OPTIONS_API__: JSON.stringify(true),
+            __VUE_PROD_DEVTOOLS__: JSON.stringify(false),
+        }),
     ],
 };
 
-// if (!isProd) {
-//     config.devtool = 'cheap-module-eval-source-map';
+if (isProd) {
+    config.plugins.push(
+        new MiniCssExtractPlugin({
+            filename: '[name].[contenthash].css',
+            chunkFilename: '[id].[contenthash].css',
+        }),
+        new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
+    );
+}
+
+// if (process.env.ANALYZER !== 'false') {
+//     config.plugins.push(
+//         new BundleAnalyzerPlugin(),
+//     );
 // }
-config.plugins.push(
-    new MiniCssExtractPlugin(),
-);
 
 module.exports = config;
