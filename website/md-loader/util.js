@@ -28,8 +28,10 @@ function compileComponent(source, script) {
             mode: 'function',
         },
     });
+    // eslint-disable-next-line
     compiled.tips.forEach(tip => console.warn(tip));
     if (compiled.errors.length) {
+        // eslint-disable-next-line
         console.error(`\n Error compiling template: \n${pad(compiled.source)}\n${compiled.errors.map(err => ` -${err}`).join('\n')} \n`);
     }
 

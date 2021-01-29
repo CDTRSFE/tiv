@@ -113,6 +113,10 @@ const config = {
     },
     plugins: [
         new VueLoaderPlugin(),
+        new MiniCssExtractPlugin({
+            filename: '[name].[contenthash].css',
+            chunkFilename: '[id].[contenthash].css',
+        }),
         new HtmlWebpackPlugin({
             template: './website/index.html',
             // filename: './index.html',
@@ -126,10 +130,10 @@ const config = {
 
 if (isProd) {
     config.plugins.push(
-        new MiniCssExtractPlugin({
-            filename: '[name].[contenthash].css',
-            chunkFilename: '[id].[contenthash].css',
-        }),
+        // new MiniCssExtractPlugin({
+        //     filename: '[name].[contenthash].css',
+        //     chunkFilename: '[id].[contenthash].css',
+        // }),
         new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
     );
 }

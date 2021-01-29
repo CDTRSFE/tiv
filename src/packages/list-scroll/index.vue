@@ -8,7 +8,7 @@
 import { defineComponent } from 'vue';
 export default defineComponent({
     name: 'TListScroll',
-    props: { },
+    props: {},
     setup() {
         // init here
         // console.log(props);

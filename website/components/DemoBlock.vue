@@ -9,8 +9,8 @@
         <div class="highlight">
             <div ref="codeWrapElm" :class="{show: visible}" class="code-wrap">
                 <div class="opt-btns">
-                    <p class="copy-icon" :aria-label="copyTips" :class="{tooltipped: copyTips}">
-                        <img src="~*/images/clippy.svg" class="bg" alt>
+                    <p class="copy-icon" :aria-label="copyTips" :class="{'tooltip-ped': copyTips}">
+                        <img src="~*/images/clippy.svg" class="bg" alt />
                     </p>
                 </div>
                 <slot name="highlight"></slot>
@@ -66,7 +66,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-@import "~@/styles/var.less";
+@import '~@/styles/var.less';
 .demo-block {
     border: 1px solid #f1f1f1;
     border-radius: 3px;
@@ -134,14 +134,24 @@ export default {
         margin: 0;
         background: transparent;
     }
-    .tooltipped:after {
+    .tooltip-ped::after {
         position: absolute;
+        top: 100%;
+        right: 50%;
         z-index: 1000000;
         display: none;
         padding: 5px 8px;
-        font: normal normal 11px/1.5 Helvetica, arial, nimbussansl,
-            liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji",
-            "Segoe UI Symbol";
+        margin-top: 5px;
+        font:
+            normal normal 11px/1.5 Helvetica,
+            arial,
+            nimbussansl,
+            liberationsans,
+            freesans,
+            clean,
+            sans-serif,
+            Segoe UI Emoji,
+            Segoe UI Symbol;
         color: #fff;
         text-align: center;
         text-decoration: none;
@@ -155,8 +165,9 @@ export default {
         background: rgba(0, 0, 0, 0.8);
         border-radius: 3px;
         -webkit-font-smoothing: subpixel-antialiased;
+        transform: translateX(50%);
     }
-    .tooltipped:before {
+    .tooltip-ped::before {
         position: absolute;
         z-index: 1000001;
         display: none;
@@ -164,47 +175,22 @@ export default {
         height: 0;
         color: rgba(0, 0, 0, 0.8);
         pointer-events: none;
-        content: "";
+        content: '';
         border: 5px solid transparent;
         top: auto;
         right: 50%;
         bottom: -5px;
         margin-right: -5px;
-        border-bottom-color: rgba(0,0,0,.8);
+        border-bottom-color: rgba(0, 0, 0, 0.8);
     }
-
-    .tooltipped:hover:before,
-    .tooltipped:hover:after,
-    .tooltipped:active:before,
-    .tooltipped:active:after,
-    .tooltipped:focus:before,
-    .tooltipped:focus:after {
+    .tooltip-ped:hover::before,
+    .tooltip-ped:hover::after,
+    .tooltip-ped:active::before,
+    .tooltip-ped:active::after,
+    .tooltip-ped:focus::before,
+    .tooltip-ped:focus::after {
         display: inline-block;
         text-decoration: none;
-    }
-    .tooltipped:after {
-        transform: translateX(50%);
-        top: 100%;
-        right: 50%;
-        margin-top: 5px;
-        position: absolute;
-        z-index: 1000000;
-        display: none;
-        padding: 5px 8px;
-        font: normal normal 11px/1.5 Helvetica,arial,nimbussansl,liberationsans,freesans,clean,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";
-        color: #fff;
-        text-align: center;
-        text-decoration: none;
-        text-shadow: none;
-        text-transform: none;
-        letter-spacing: normal;
-        word-wrap: break-word;
-        white-space: pre;
-        pointer-events: none;
-        content: attr(aria-label);
-        background: rgba(0,0,0,.8);
-        border-radius: 3px;
-        -webkit-font-smoothing: subpixel-antialiased;
     }
 }
 </style>

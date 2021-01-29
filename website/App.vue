@@ -42,7 +42,7 @@ export default {
     }
     .footer {
         // height: 100px;
-        background: #eee
+        background: #eee;
     }
 }
 </style>

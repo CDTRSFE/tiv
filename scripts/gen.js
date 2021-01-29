@@ -1,4 +1,5 @@
 if (!process.argv[2] || !process.argv[3]) {
+    // eslint-disable-next-line
     console.error('Usage: npm run gen <name> <chinese name>\n');
     process.exit(1);
 }
@@ -6,6 +7,7 @@ if (!process.argv[2] || !process.argv[3]) {
 // 组件名
 const name = process.argv[2];
 if (!name) {
+    // eslint-disable-next-line
     console.error('名称必填\n\n');
     process.exit(1);
 }
@@ -23,6 +25,7 @@ const websitePath = path.resolve(__dirname, '../website');
 // todo fs.lstatSync(path).isDirectory()
 try {
     fs.statSync(resourcePath).isDirectory();
+    // eslint-disable-next-line
     console.error('组件已存在\n\n');
     process.exit(1);
 } catch (err) {
@@ -95,6 +98,7 @@ list.push({
 fileSave(path.join(__dirname, '../website/nav.config.js'))
     .write(`module.exports = ${JSON.stringify(navConfig, null, 4)}\n`);
 
+// eslint-disable-next-line
 console.log('\nDONE!\n');
 
 // const { exec } = require('shelljs');
