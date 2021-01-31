@@ -1,9 +1,11 @@
 <template>
     <div class="header">
-        <p class="name">Tiv</p>
+        <img class="logo" src="~*/images/tiv-logo.png" alt="" />
+        <p class="name">Tiv UI</p>
         <ul class="links">
             <li v-for="item in links" :key="item.path" class="item">
-                <router-link :to="item.path">{{ item.name }}</router-link>
+                <a v-if="item.blank" :href="item.path" target="blank">{{ item.name }}</a>
+                <router-link v-else :to="item.path">{{ item.name }}</router-link>
             </li>
         </ul>
     </div>
@@ -23,6 +25,11 @@ export default {
                     name: '组件',
                     path: '/component',
                 },
+                {
+                    name: 'GitHub',
+                    path: 'https://github.com/iamzhaoqing/tiv',
+                    blank: true,
+                },
             ],
         };
     },
@@ -32,10 +39,17 @@ export default {
 <style scoped lang="less">
 .header {
     display: flex;
+    align-items: center;
+    height: 60px;
     padding: 0 20px;
     .name {
-        line-height: 60px;
-        font-size: 28px;
+        font-size: 20px;
+        font-weight: 200;
+    }
+    .logo {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
     }
 }
 .links {
@@ -46,6 +60,10 @@ export default {
     height: 100%;
     .item {
         margin: 0 10px;
+    }
+    a {
+        display: inline-block;
+        line-height: 2;
     }
 }
 .router-link-active {

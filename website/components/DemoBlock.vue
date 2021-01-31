@@ -68,7 +68,7 @@ export default {
 <style scoped lang="less">
 @import '~@/styles/var.less';
 .demo-block {
-    border: 1px solid #f1f1f1;
+    border: 1px solid @border-color;
     border-radius: 3px;
     // overflow: hidden;
     .demo {
@@ -76,7 +76,7 @@ export default {
     }
     .description {
         padding: 20px 20px 4px;
-        border-top: 1px dashed #f1f1f1;
+        border-top: 1px dashed @border-color;
         font-size: 14px;
         color: @text-color;
     }
@@ -95,6 +95,8 @@ export default {
     .code-wrap {
         overflow: hidden;
         height: 1px;
+        padding: 0 20px;
+        background: #fff;
         &.show {
             height: auto;
         }
@@ -122,14 +124,14 @@ export default {
     .opt-btns {
         display: none;
         position: absolute;
-        right: 10px;
+        right: 30px;
         top: 10px;
         cursor: pointer;
         user-select: none;
     }
     .copy-icon {
         position: relative;
-        width: 20px;
+        width: 16px;
         height: 22px;
         margin: 0;
         background: transparent;

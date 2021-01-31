@@ -16,9 +16,10 @@ export default defineComponent({
 });
 </script>
 <style lang="less" scoped>
+@import '~@/styles/var.less';
 .list-scroll {
     .text {
-        background: #f1f1f1;
+        background: @border-color;
     }
 }
 </style>

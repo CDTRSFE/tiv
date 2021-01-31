@@ -1,5 +1,6 @@
 <template>
     <div class="side-nav">
+        <input v-model="searchKey" type="text" class="search-inp" placeholder="搜索" />
         <ul class="list">
             <li v-for="item in list" :key="item.path" class="item">
                 <p
@@ -34,6 +35,7 @@ export default {
         return {
             list: nav,
             path: '',
+            searchKey: '',
         };
     },
     computed: {
@@ -46,6 +48,7 @@ export default {
     },
     methods: {
         toPage(p) {
+            if (!p) return;
             const path = this.baseUrl + p;
             if (this.path === path) return;
             this.path = path;
@@ -60,7 +63,31 @@ export default {
 <style scoped lang="less">
 @import '~@/styles/var.less';
 .side-nav {
-    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 40px);
+    margin: 20px 0;
+}
+.search-inp {
+    display: inline-block;
+    width: calc(100% - 20px);
+    padding: 4px 10px;
+    margin: 0 10px 10px;
+    line-height: 29px;
+    color: @theme-color;
+    // border: 1px solid tint(@link-color, 70%);
+    border: none;
+    background-color: tint(@link-color, 90%);
+    border-radius: 3px;
+    outline: none;
+    &::placeholder {
+        color: @theme-color;
+    }
+}
+.list {
+    flex: 1;
+    height: 0;
+    // overflow: auto;
 }
 .name,
 .sub-name {
@@ -72,11 +99,11 @@ export default {
 }
 .sub-nav {
     // padding-left: 6px;
-    color: #444;
+    color: @text-color;
     font-size: 14px;
 }
 .sub-nav .sub-name {
-    padding-left: 26px;
+    // padding-left: 26px;
 }
 .link {
     &:hover {
@@ -86,17 +113,6 @@ export default {
     &.active {
         position: relative;
         color: @link-color;
-        background: #f0faff;
     }
-    // &.active::after {
-    //     display: inline-block;
-    //     position: absolute;
-    //     content: '';
-    //     right: 0;
-    //     top: 0;
-    //     width: 2px;
-    //     height: 100%;
-    //     background: @theme-color;
-    // }
 }
 </style>

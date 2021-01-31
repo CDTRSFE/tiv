@@ -4,6 +4,7 @@ body {
     height: 100%;
     margin: 0;
 }
+// 文档样式修改
 .docs-content {
     a {
         color: @link-color;
@@ -14,6 +15,8 @@ body {
     h3,
     h4,
     h5 {
+        color: @text-color;
+        border-bottom: 0;
         a {
             float: left;
             margin-left: -20px;
@@ -24,32 +27,53 @@ body {
             opacity: 0.8;
         }
     }
-    .warning {
+    ul,
+    li {
+        list-style: initial;
+    }
+    .warning,
+    .tip {
         padding: 8px 16px;
-        background-color: #fff6f7;
+        background-color: @error-bg;
         border-radius: 4px;
-        border-left: #fe6c6f 4px solid;
+        // border-left: #fe6c6f 4px solid;
         margin: 20px 0;
-        color: #555;
+        color: @text-color;
         font-size: 14px;
         & p {
             margin: 12px 0;
         }
     }
     .tip {
-        padding: 8px 16px;
-        background-color: #ecf8ff;
-        border-radius: 4px;
-        border-left: #50bfff 4px solid;
-        margin: 20px 0;
-        color: #555;
-        font-size: 14px;
-        & p {
-            margin: 12px 0;
-        }
+        background-color: @theme-bg;
     }
     .warning code,
     .tip code {
         background-color: rgba(255, 255, 255, 0.7);
+    }
+    tr th {
+        font-weight: 400;
+        color: @text-color;
+        text-align: left;
+    }
+    .markdown-body table td,
+    .markdown-body table th {
+        padding: 14px 10px;
+        border-color: @border-color;
+    }
+    .markdown-body table tr {
+        border-top-color: @border-color;
+    }
+    .markdown-body table tr:nth-child(2n) {
+        background: transparent;
+    }
+    td,
+    th {
+        &:first-child {
+            width: 140px;
+        }
+    }
+    .markdown-body {
+        color: @text-color;
     }
 }

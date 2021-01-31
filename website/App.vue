@@ -1,7 +1,7 @@
 <template>
     <div class="main-app">
         <div class="main">
-            <Header class="header"></Header>
+            <header-com class="header"></header-com>
             <!-- <t-select-label2>333</t-select-label2> -->
             <div class="container">
                 <router-view></router-view>
@@ -13,24 +13,22 @@
 
 <script>
 // import TSelectLabel2 from '../dist/es/select-label';
-import Header from './components/Header';
+import HeaderCom from './components/Header';
 export default {
     name: 'MainApp',
     components: {
-        Header,
+        HeaderCom,
         // TSelectLabel2,
     },
 };
 </script>
 
 <style lang="less">
+@import '~@/styles/var.less';
 .main-app {
     height: 100%;
-    // min-width: 1320px;
-    // color: #333;
     .header {
-        height: 60px;
-        border-bottom: 1px solid #f1f1f1;
+        border-bottom: 1px solid @border-color;
     }
     .container {
         flex: 1;
@@ -41,7 +39,6 @@ export default {
         height: 100vh;
     }
     .footer {
-        // height: 100px;
         background: #eee;
     }
 }

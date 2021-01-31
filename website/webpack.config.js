@@ -9,6 +9,22 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const isProd = process.env.NODE_ENV === 'production';
 
+const layoutLoaders = [
+    'style-loader',
+    {
+        loader: MiniCssExtractPlugin.loader,
+        // https://github.com/vuejs/vue-loader/issues/1742
+        options: {
+            esModule: false,
+        },
+    },
+    'css-loader',
+    'less-loader',
+];
+if (!isProd) {
+    layoutLoaders.splice(1, 1);
+}
+
 const config = {
     mode: isProd ? 'production' : 'development',
     devtool: !isProd && 'eval-cheap-module-source-map',
@@ -41,18 +57,7 @@ const config = {
             },
             {
                 test: /.(less|css)$/,
-                use: [
-                    'style-loader',
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        // https://github.com/vuejs/vue-loader/issues/1742
-                        options: {
-                            esModule: false,
-                        },
-                    },
-                    'css-loader',
-                    'less-loader',
-                ],
+                use: layoutLoaders,
             },
             {
                 test: /.md$/,
@@ -113,10 +118,10 @@ const config = {
     },
     plugins: [
         new VueLoaderPlugin(),
-        new MiniCssExtractPlugin({
-            filename: '[name].[contenthash].css',
-            chunkFilename: '[id].[contenthash].css',
-        }),
+        // new MiniCssExtractPlugin({
+        //     filename: '[name].[contenthash].css',
+        //     chunkFilename: '[id].[contenthash].css',
+        // }),
         new HtmlWebpackPlugin({
             template: './website/index.html',
             // filename: './index.html',
@@ -130,10 +135,10 @@ const config = {
 
 if (isProd) {
     config.plugins.push(
-        // new MiniCssExtractPlugin({
-        //     filename: '[name].[contenthash].css',
-        //     chunkFilename: '[id].[contenthash].css',
-        // }),
+        new MiniCssExtractPlugin({
+            filename: '[name].[contenthash].css',
+            chunkFilename: '[id].[contenthash].css',
+        }),
         new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
     );
 }

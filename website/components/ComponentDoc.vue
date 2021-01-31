@@ -58,13 +58,14 @@ export default {
 </script>
 
 <style scoped lang="less">
+@import '~@/styles/var.less';
 .component-doc {
     display: flex;
     height: 100%;
     .aside {
         flex-shrink: 0;
         width: 260px;
-        border-right: 1px solid #f1f1f1;
+        border-right: 1px solid @border-color;
     }
     .docs {
         flex: 1;
