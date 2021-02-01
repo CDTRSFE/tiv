@@ -32,6 +32,8 @@ export default {
     }
     .container {
         flex: 1;
+        height: 0;
+        overflow: auto;
     }
     .main {
         display: flex;

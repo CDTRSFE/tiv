@@ -87,7 +87,7 @@ export default {
 .list {
     flex: 1;
     height: 0;
-    // overflow: auto;
+    overflow: auto;
 }
 .name,
 .sub-name {

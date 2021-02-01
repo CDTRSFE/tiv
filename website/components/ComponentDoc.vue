@@ -43,6 +43,7 @@ export default {
                 const href = a.getAttribute('href');
                 a.href = location.href.split('#').slice(0, 2).join('#') + href;
             });
+            this.$refs.docContent.parentNode.scrollTop = 0;
         },
         scrollToAnchor() {
             const hash = this.$route.hash.match(/#([^#]+)$/);
