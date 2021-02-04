@@ -1,6 +1,6 @@
 {
   "name": "tiv",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "description": "A Component Library for Vue3.0",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
@@ -16,7 +16,7 @@
     "build:lib": "rollup --config ./build/rollup.config.lib.js",
     "build:website": "rimraf website/dist && cross-env NODE_ENV=production webpack --config ./website/webpack.config.js",
     "publish:website": "npm run build:website && bash ./scripts/website-publish.sh",
-    "b": "rimraf dist && npm run build:com"
+    "publish:lib": "bash ./scripts/publish.sh"
   },
   "husky": {
     "hooks": {
@@ -35,7 +35,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iamzhaoqing/vue-lib.git"
+    "url": "git+https://github.com/iamzhaoqing/tiv.git"
   },
   "keywords": [
     "vue"
@@ -43,9 +43,9 @@
   "author": "zhaoqing",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/iamzhaoqing/vue-lib/issues"
+    "url": "https://github.com/iamzhaoqing/tiv/issues"
   },
-  "homepage": "https://github.com/iamzhaoqing/vue-lib#readme",
+  "homepage": "https://github.com/iamzhaoqing/tiv#readme",
   "peerDependencies": {
     "vue": "^3.0.5"
   },
@@ -113,5 +113,10 @@
   "workspaces": [
     "packages/*"
   ],
-  "dependencies": {}
+  "dependencies": {},
+  "files": [
+    "lib",
+    "styles",
+    "packages"
+  ]
 }
