@@ -16,7 +16,8 @@
     "build:lib": "rollup --config ./build/rollup.config.lib.js",
     "build:website": "rimraf website/dist && cross-env NODE_ENV=production webpack --config ./website/webpack.config.js",
     "publish:website": "npm run build:website && bash ./scripts/website-publish.sh",
-    "publish:lib": "bash ./scripts/publish.sh"
+    "publish:lib": "bash ./scripts/publish.sh",
+    "gen-log": "git-chglog -o CHANGELOG.md"
   },
   "husky": {
     "hooks": {
