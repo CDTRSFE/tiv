@@ -1,7 +1,7 @@
-import '../../styles/base.less';
-import { App } from 'vue';
-import TListScroll from '../list-scroll/index';
-import SelectLabel from '../select-label/index';
+import './style.ts';
+import type { App } from 'vue';
+import TListScroll from '../list-scroll';
+import SelectLabel from '../select-label';
 
 const components = [
     TListScroll,

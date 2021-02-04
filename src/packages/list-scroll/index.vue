@@ -16,7 +16,7 @@ export default defineComponent({
 });
 </script>
 <style lang="less" scoped>
-@import '~@/styles/var.less';
+@import '../../styles/var.less';
 .list-scroll {
     .text {
         background: @border-color;

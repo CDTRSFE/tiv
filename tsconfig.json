@@ -15,10 +15,10 @@
             "DOM"
         ],
         "allowSyntheticDefaultImports": true,
-        // "baseUrl": "./",
-        // "paths": {
-        //     "@/*": ["src/*"]
-        // }
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"]
+        }
     },
     "exclude": [
         "node_modules"

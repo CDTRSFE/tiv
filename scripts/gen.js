@@ -66,18 +66,18 @@ export default defineComponent({
 </style>
 `,
     },
-    {
-        fileName: `${resourcePath}/package.json`,
-        content: `{
-    "name": "@tiv/${name}",
-    "version": "0.0.0",
-    "main": "dist/index.js",
-    "license": "MIT",
-    "peerDependencies": {
-        "vue": "^3.0.5"
-    }
-}`,
-    },
+    //     {
+    //         fileName: `${resourcePath}/package.json`,
+    //         content: `{
+    //     "name": "@tiv/${name}",
+    //     "version": "0.0.0",
+    //     "main": "dist/index.js",
+    //     "license": "MIT",
+    //     "peerDependencies": {
+    //         "vue": "^3.0.5"
+    //     }
+    // }`,
+    //     },
     {
         fileName: `${websitePath}/docs/${name}.md`,
         content: `## ${chineseName}`,
