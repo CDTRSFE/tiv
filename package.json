@@ -11,6 +11,7 @@
     "lint": "eslint . --ext .js,.ts,.vue",
     "lint:style": "stylelint '{src,website}/**/*.{vue,html,css,less,scss,sass}'",
     "serve": "webpack-dev-server --config ./website/webpack.config.js",
+    "serve-view": "cross-env VIEW_ENV=true npm run serve",
     "build": "rimraf dist && node ./build/version.js && npm run build:com && npm run build:lib && node ./build/copy-files.js",
     "build:com": "node ./build/rollup.config.com.js",
     "build:lib": "rollup --config ./build/rollup.config.lib.js",

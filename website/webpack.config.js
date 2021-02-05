@@ -8,6 +8,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const isProd = process.env.NODE_ENV === 'production';
+const isView = process.env.VIEW_ENV === 'true';
 
 const layoutLoaders = [
     'style-loader',
@@ -28,7 +29,7 @@ if (!isProd) {
 const config = {
     mode: isProd ? 'production' : 'development',
     devtool: !isProd && 'eval-cheap-module-source-map',
-    entry: path.resolve(__dirname, './main.js'),
+    entry: path.resolve(__dirname, isView ? './view.js' : './main.js'),
     output: {
         path: path.resolve(__dirname, '../website/dist'),
         publicPath: isProd ? '/tiv/' : '/',
