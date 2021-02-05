@@ -1,4 +1,11 @@
 const files = require.context('./docs', false, /\.md$/);
+const comRoutes = {
+    path: '/component',
+    name: 'component',
+    component: () => import('./components/ComponentDoc.vue'),
+    redirect: '/component/installation',
+    children: [],
+};
 const routes = [
     {
         path: '/home',
@@ -6,12 +13,11 @@ const routes = [
         component: () => import('./components/HomePage.vue'),
     },
     {
-        path: '/component',
-        name: 'component',
-        component: () => import('./components/ComponentDoc.vue'),
-        redirect: '/component/installation',
-        children: [],
+        path: '/change-log',
+        name: 'changeLog',
+        component: () => import('./components/ChangeLog.vue'),
     },
+    comRoutes,
     {
         path: '/',
         redirect: '/home',
@@ -19,7 +25,7 @@ const routes = [
 ];
 files.keys().forEach(key => {
     const name = key.replace(/.\/(.*).md$/, '$1');
-    routes[1].children.push({
+    comRoutes.children.push({
         path: name,
         name,
         meta: {

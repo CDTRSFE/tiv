@@ -26,6 +26,10 @@ export default {
                     path: '/component',
                 },
                 {
+                    name: '更新日志',
+                    path: '/change-log',
+                },
+                {
                     name: 'GitHub',
                     path: 'https://github.com/iamzhaoqing/tiv',
                     blank: true,
