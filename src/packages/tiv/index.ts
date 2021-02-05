@@ -2,10 +2,12 @@ import './style.ts';
 import type { App } from 'vue';
 import TListScroll from '../list-scroll';
 import SelectLabel from '../select-label';
+import ScaleView from '../scale-view';
 
 const components = [
     TListScroll,
     SelectLabel,
+    ScaleView,
 ];
 
 export default {
@@ -17,4 +19,5 @@ export default {
 export {
     TListScroll,
     SelectLabel,
+    ScaleView,
 };

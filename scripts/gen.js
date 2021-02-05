@@ -37,12 +37,15 @@ const files = [
         fileName: resourcePath + '/index.ts',
         content: `import { App } from 'vue';
 import ${upperCaseName} from './${upperCaseName}.vue';
+import type { SFCWithInstall } from '../utils/types';
 
 ${upperCaseName}.install = (app: App): void => {
     app.component(${upperCaseName}.name, ${upperCaseName});
 };
 
-export default ${upperCaseName};
+const _${upperCaseName}: SFCWithInstall<typeof ${upperCaseName}> = ${upperCaseName};
+
+export default _${upperCaseName};
 `,
     },
     {
