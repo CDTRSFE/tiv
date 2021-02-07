@@ -92,7 +92,7 @@ const config = {
     },
     devServer: {
         inline: true,
-        port: '8089',
+        port: isView ? '8088' : '8089',
         hot: true,
         stats: 'minimal',
         publicPath: '/',

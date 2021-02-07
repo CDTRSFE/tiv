@@ -21,16 +21,9 @@ export default {
     components: {
         SideNav,
     },
-    beforeRouteUpdate(to, from, next) {
-        next();
-        setTimeout(() => {
-            if (to.path !== from.path) {
-                this.resetAnchorHref();
-            }
-            if (to.path === from.path && to.hash) {
-                this.scrollToAnchor();
-            }
-        }, 100);
+    beforeRouteUpdate() {
+        this.resetAnchorHref();
+        this.scrollToAnchor();
     },
     mounted() {
         this.resetAnchorHref();
@@ -46,13 +39,15 @@ export default {
             this.$refs.docContent.parentNode.scrollTop = 0;
         },
         scrollToAnchor() {
-            const hash = this.$route.hash.match(/#([^#]+)$/);
-            if (!hash) return;
-            const elm = document.querySelector(hash[0]);
-            if (!elm) return;
-            elm.scrollIntoView({
-                behavior: 'smooth',
-            });
+            setTimeout(() => {
+                const hash = this.$route.hash.match(/#([^#]+)$/);
+                if (!hash) return;
+                const elm = document.querySelector(hash[0]);
+                if (!elm) return;
+                elm.scrollIntoView({
+                    behavior: 'smooth',
+                });
+            }, 100);
         },
     },
 };
@@ -82,7 +77,7 @@ export default {
     }
     .docs-content {
         max-width: 900px;
-        margin: 30px auto;
+        margin: 30px auto 50px;
     }
 }
 </style>

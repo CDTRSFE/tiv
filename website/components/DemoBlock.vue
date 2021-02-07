@@ -24,6 +24,7 @@
 
 <script>
 import Clipboard from 'clipboard';
+import hljs from 'highlight.js';
 
 export default {
     name: 'DemoBlock',
@@ -42,11 +43,12 @@ export default {
             this.clearTips();
             e.clearSelection();
         });
-
         this.clipboard.on('error', () => {
             this.copyTips = 'falied!';
             this.clearTips();
         });
+        const blocks = this.$refs.codeWrapElm.querySelectorAll('code');
+        blocks.forEach(hljs.highlightBlock);
     },
     beforeUnmount() {
         this.clipboard.destroy();
@@ -68,6 +70,7 @@ export default {
 <style scoped lang="less">
 @import '~@/styles/var.less';
 .demo-block {
+    margin-bottom: 16px;
     border: 1px solid @border-color;
     border-radius: 3px;
     // overflow: hidden;

@@ -80,6 +80,7 @@ export default {
     background-color: tint(@link-color, 90%);
     border-radius: 3px;
     outline: none;
+    box-sizing: border-box;
     &::placeholder {
         color: @theme-color;
     }

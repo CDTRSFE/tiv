@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 
 // 非组件
-const notCom = /utils|tiv/;
+const notCom = /utils|tiv|hooks/;
 
 const pkgPath = path.resolve(__dirname, '../src/packages');
 const pkgNames = [];

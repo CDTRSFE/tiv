@@ -23,7 +23,7 @@ module.exports = function(content) {
         const html = stripTemplate(commentContent);
         const script = stripScript(commentContent);
         const componentName = `ComponentDemo${id}`;
-        componentsOpt += `${componentName}: ${compileComponent(html, script)}`;
+        componentsOpt += `${componentName}: ${compileComponent(html, script)},`;
         output.push(`<template v-slot:demo><${componentName} /></template>`);
 
         id++;

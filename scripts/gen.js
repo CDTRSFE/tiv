@@ -95,7 +95,7 @@ files.forEach(file => {
 const navConfig = require('../website/nav.config');
 const list = navConfig[1].children;
 list.push({
-    name: chineseName,
+    name: upperCaseName + ' ' + chineseName,
     path: '/' + name,
 });
 fileSave(path.join(__dirname, '../website/nav.config.js'))

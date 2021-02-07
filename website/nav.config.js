@@ -7,15 +7,15 @@ module.exports = [
         "name": "组件",
         "children": [
             {
-                "name": "列表滚动",
+                "name": "ListScroll 列表滚动",
                 "path": "/list-scroll"
             },
             {
-                "name": "选择器",
+                "name": "SelectLabel 选择器",
                 "path": "/select-label"
             },
             {
-                "name": "可伸缩视图容器",
+                "name": "ScaleView 可伸缩视图容器",
                 "path": "/scale-view"
             }
         ]
