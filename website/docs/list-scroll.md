@@ -32,6 +32,11 @@ Input 为受控组件，它总会显示 Vue 绑定值。通常情况下，应当
         },
     }
 </script>
+<style lang="less">
+    button {
+        color: red;
+    }
+</style>
 ```
 :::
 

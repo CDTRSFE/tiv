@@ -48,7 +48,7 @@ md.use(anchorPlugin, {
 
 module.exports = function(source) {
     const result = md.render(source);
-    const { template, componentsOpt } = genComponent(result);
+    const { template, componentsOpt, style } = genComponent(result);
     return `
     <template>
         <div class="markdown-body">${template}</div>
@@ -62,5 +62,8 @@ module.exports = function(source) {
             }
         }
     </script>
+    <style>
+        ${style}
+    </style>
     `;
 };

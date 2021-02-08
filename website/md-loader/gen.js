@@ -1,5 +1,5 @@
 /* eslint-disable */
-const {stripScript, stripStyle, stripTemplate, compileComponent}  = require('./util');
+const compileComponent  = require('./util');
 
 const startTag = '<!--component-demo:';
 const startTagLen = startTag.length;
@@ -13,6 +13,7 @@ module.exports = function(content) {
     let id = 0;
     // 字符串开始的位置
     let start = 0;
+    const styles = [];
 
     let commentStart = content.indexOf(startTag);
     let commentEnd = content.indexOf(endTag, commentStart, + startTagLen);
@@ -20,12 +21,11 @@ module.exports = function(content) {
     while (commentStart !== -1 && commentEnd !== -1) {
         output.push(content.slice(start, commentStart));
         const commentContent = content.slice(commentStart + startTagLen, commentEnd);
-        const html = stripTemplate(commentContent);
-        const script = stripScript(commentContent);
         const componentName = `ComponentDemo${id}`;
-        componentsOpt += `${componentName}: ${compileComponent(html, script)},`;
+        const { component, style } = compileComponent(commentContent, 'data-v-demo-id-' + id);
+        componentsOpt += `${componentName}: ${component},`;
         output.push(`<template v-slot:demo><${componentName} /></template>`);
-
+        styles && styles.push(style);
         id++;
         start = commentEnd + endTagLen;
         commentStart = content.indexOf(startTag, start);
@@ -34,6 +34,7 @@ module.exports = function(content) {
     output.push(content.slice(start));
     return {
         template: output.join(''),
-        componentsOpt
+        componentsOpt,
+        style: styles.join('\n')
     };
 }
