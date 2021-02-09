@@ -17,6 +17,10 @@ module.exports = [
             {
                 "name": "ScaleView 可伸缩视图容器",
                 "path": "/scale-view"
+            },
+            {
+                "name": "Carousel 轮播",
+                "path": "/carousel"
             }
         ]
     },

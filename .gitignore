@@ -22,4 +22,5 @@ pnpm-debug.log*
 *.sln
 *.sw?
 
+website/view/Index.vue
 z-note.md

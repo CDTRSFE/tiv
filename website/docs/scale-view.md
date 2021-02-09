@@ -80,9 +80,9 @@ export default {
 
 ### Attribute
 
-| 参数        | 说明                  | 类型                         | 可选值 | 默认值   |
-| ----------- | --------------------- | ---------------------------- | ------ | -------- |
-| ratio       | 容器的宽高比例        | string                       | -      | '1.75:1' |
-| enable-rem  | 是否启用 rem          | boolean                      | -      | true     |
-| base-method | 设置 rem 基准值的方法 | Function({ containerWidth }) | -      | -        |
+| 参数        | 说明                  | 类型                         | 可选值 | 默认值 |
+| ----------- | --------------------- | ---------------------------- | ------ | ------ |
+| ratio       | 容器的宽高比例        | string                       | -      | 1.75:1 |
+| enable-rem  | 是否启用 rem          | boolean                      | -      | true   |
+| base-method | 设置 rem 基准值的方法 | Function({ containerWidth }) | -      | -      |
 

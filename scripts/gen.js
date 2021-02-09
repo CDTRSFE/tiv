@@ -49,14 +49,15 @@ export default _${upperCaseName};
 `,
     },
     {
-        fileName: `${resourcePath}/${upperCaseName}.vue`,
+        fileName: `${resourcePath}/Index.vue`,
         content: `<template>
-    <div class="${name}">
+    <div class="t-${name}">
         <slot></slot>
     </div>
 </template>
 <script lang='ts'>
 import { defineComponent } from 'vue';
+
 export default defineComponent({
     name: 'T${upperCaseName}',
     props: {},
@@ -66,6 +67,7 @@ export default defineComponent({
 });
 </script>
 <style lang="less" scoped>
+.t-${name} {}
 </style>
 `,
     },

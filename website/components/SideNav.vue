@@ -77,7 +77,7 @@ export default {
     color: @theme-color;
     // border: 1px solid tint(@link-color, 70%);
     border: none;
-    background-color: tint(@link-color, 90%);
+    background-color: @theme-bg;
     border-radius: 3px;
     outline: none;
     box-sizing: border-box;
@@ -114,6 +114,7 @@ export default {
     &.active {
         position: relative;
         color: @link-color;
+        font-weight: 500;
     }
 }
 </style>
