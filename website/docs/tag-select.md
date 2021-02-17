@@ -66,10 +66,8 @@ export default {
 
 ```html
 <template>
-    <div class="view-index">
-        <t-tag-select v-model="value1" :options="options" disabled></t-tag-select>
-        <t-tag-select v-model="value2" class="mt10" :options="options"></t-tag-select>
-    </div>
+    <t-tag-select v-model="value1" :options="options" disabled></t-tag-select>
+    <t-tag-select v-model="value2" :options="options" class="mt10"></t-tag-select>
 </template>
 
 <script>
@@ -124,9 +122,7 @@ export default {
 
 ```html
 <template>
-    <div class="view-index">
-        <t-tag-select v-model="value" :options="options" expandable></t-tag-select>
-    </div>
+    <t-tag-select v-model="value" :options="options" expandable></t-tag-select>
 </template>
 
 <script>
@@ -156,9 +152,7 @@ export default {
 
 ```html
 <template>
-    <div class="view-index">
-        <t-tag-select v-model="value" :options="options" check-all></t-tag-select>
-    </div>
+    <t-tag-select v-model="value" :options="options" check-all></t-tag-select>
 </template>
 
 <script>
