@@ -36,7 +36,7 @@ const files = [
     {
         fileName: resourcePath + '/index.ts',
         content: `import { App } from 'vue';
-import ${upperCaseName} from './${upperCaseName}.vue';
+import ${upperCaseName} from './Index.vue';
 import type { SFCWithInstall } from '../utils/types';
 
 ${upperCaseName}.install = (app: App): void => {
@@ -67,7 +67,10 @@ export default defineComponent({
 });
 </script>
 <style lang="less" scoped>
-.t-${name} {}
+@import '../../styles/var.less';
+.t-${name} {
+    //
+}
 </style>
 `,
     },

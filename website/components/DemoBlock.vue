@@ -88,7 +88,11 @@ export default {
         background: #fafafa;
         margin-bottom: 0;
     }
-    pre {
+    &::v-deep(ul, li) {
+        margin: 0;
+        padding: 0;
+    }
+    &::v-deep(pre) {
         margin: 0;
         line-height: 1.6;
     }

@@ -21,6 +21,10 @@ module.exports = [
             {
                 "name": "Carousel 轮播",
                 "path": "/carousel"
+            },
+            {
+                "name": "TagSelect 标签选择器",
+                "path": "/tag-select"
             }
         ]
     },

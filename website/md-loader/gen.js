@@ -1,12 +1,13 @@
 /* eslint-disable */
 const compileComponent  = require('./util');
+// const { uid } = require('uid');
 
 const startTag = '<!--component-demo:';
 const startTagLen = startTag.length;
 const endTag = ':component-demo-->';
 const endTagLen = endTag.length;
 
-module.exports = function(content) {
+module.exports = function(content, fileName) {
     let componentsOpt = '';
     let output = [];
     // demo 组件的 id
@@ -22,10 +23,14 @@ module.exports = function(content) {
         output.push(content.slice(start, commentStart));
         const commentContent = content.slice(commentStart + startTagLen, commentEnd);
         const componentName = `ComponentDemo${id}`;
-        const { component, style } = compileComponent(commentContent, 'data-v-demo-id-' + id);
+        // todo
+        // id 都会从 0 开始，会造成不同 md 文件里的 demo style 名称会相同，所以加了 filename 做区分。
+        // id 设置成时间戳或者拿到函数的外层都不行？
+        // loader 会调用多次？
+        const { component, style } = compileComponent(commentContent, `demo-${fileName}-${id}`);
         componentsOpt += `${componentName}: ${component},`;
         output.push(`<template v-slot:demo><${componentName} /></template>`);
-        styles && styles.push(style);
+        style && styles.push(style);
         id++;
         start = commentEnd + endTagLen;
         commentStart = content.indexOf(startTag, start);

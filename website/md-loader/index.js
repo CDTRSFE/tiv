@@ -48,7 +48,8 @@ md.use(anchorPlugin, {
 
 module.exports = function(source) {
     const result = md.render(source);
-    const { template, componentsOpt, style } = genComponent(result);
+    const fileName = this.resourcePath.match(/([\w-]+).md$/)[1];
+    const { template, componentsOpt, style } = genComponent(result, fileName);
     return `
     <template>
         <div class="markdown-body">${template}</div>
