@@ -7,14 +7,6 @@ module.exports = [
         "name": "组件",
         "children": [
             {
-                "name": "ListScroll 列表滚动",
-                "path": "/list-scroll"
-            },
-            {
-                "name": "SelectLabel 选择器",
-                "path": "/select-label"
-            },
-            {
                 "name": "ScaleView 可伸缩视图容器",
                 "path": "/scale-view"
             },
@@ -31,14 +23,6 @@ module.exports = [
     {
         "name": "指令",
         "children": [
-            {
-                "name": "自动聚焦指令",
-                "path": "/auto-focus"
-            },
-            {
-                "name": "超出省略",
-                "path": "/ellipsis"
-            },
             {
                 "name": "ClickOutside 外部点击",
                 "path": "/click-outside"

@@ -1,15 +1,11 @@
 import './style.ts';
 import type { App } from 'vue';
-import TListScroll from '../list-scroll';
-import SelectLabel from '../select-label';
 import ScaleView from '../scale-view';
 import Carousel from '../carousel';
 import TagSelect from '../tag-select';
 import ClickOutside from '../click-outside';
 
 const components = [
-    TListScroll,
-    SelectLabel,
     ScaleView,
     Carousel,
     TagSelect,
@@ -23,8 +19,6 @@ export default {
 };
 
 export {
-    TListScroll,
-    SelectLabel,
     ScaleView,
     Carousel,
     TagSelect,
