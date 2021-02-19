@@ -8,6 +8,7 @@ const clickHandler = (e: MouseEvent) => {
         documentHandler(e);
     }
 };
+// 使用事件捕获，外部元素可能用了 @click.stop 阻止冒泡
 document.addEventListener('click', clickHandler, true);
 
 function createDocumentHandler(el: HTMLElement, binding: DirectiveBinding): DocumentHandler {
@@ -15,6 +16,7 @@ function createDocumentHandler(el: HTMLElement, binding: DirectiveBinding): Docu
         if (el.contains(e.target as Node)) {
             return false;
         }
+        // 此回调处于事件捕获阶段，执行先于外部元素的点击事件
         setTimeout(() => {
             binding.value(e);
         }, 0);
