@@ -3,6 +3,7 @@ const typescript = require('rollup-plugin-typescript2');
 const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const vue = require('rollup-plugin-vue');
 const less = require('rollup-plugin-less');
+const commonjs = require('@rollup/plugin-commonjs');
 const { terser } = require('rollup-plugin-terser');
 const pkg = require('../package.json');
 const deps = Object.keys(pkg.dependencies);
@@ -88,6 +89,7 @@ module.exports = [
         plugins: [
             terser(),
             nodeResolve(),
+            commonjs(),
             typescript({
                 tsconfigOverride: {
                     compilerOptions: {

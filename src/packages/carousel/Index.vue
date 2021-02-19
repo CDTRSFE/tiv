@@ -134,14 +134,6 @@ export default defineComponent({
         overflow: hidden;
     }
 }
-// @directions: left right up down;
-// each(@directions, {
-//     .animate-@{value} {
-//         // 编译后 @keyframes 会加上组件 id，不能将此样式写在 contentStyle 里
-//         // 为了提高优先级需要加 important
-//         animation-name: ~'t-carousel-move-@{value}' !important;
-//     }
-// });
 </style>
 <style>
 @keyframes t-carousel-move-left {
