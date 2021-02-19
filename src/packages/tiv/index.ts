@@ -5,6 +5,7 @@ import SelectLabel from '../select-label';
 import ScaleView from '../scale-view';
 import Carousel from '../carousel';
 import TagSelect from '../tag-select';
+import ClickOutside from '../click-outside';
 
 const components = [
     TListScroll,
@@ -17,6 +18,7 @@ const components = [
 export default {
     install: (app: App): void => {
         components.forEach(c => app.component(c.name, c));
+        app.directive('click-outside', ClickOutside);
     },
 };
 
@@ -26,4 +28,5 @@ export {
     ScaleView,
     Carousel,
     TagSelect,
+    ClickOutside,
 };

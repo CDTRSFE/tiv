@@ -25,7 +25,7 @@ module.exports = [
             {
                 "name": "TagSelect 标签选择器",
                 "path": "/tag-select"
-            }
+            },
         ]
     },
     {
@@ -38,6 +38,10 @@ module.exports = [
             {
                 "name": "超出省略",
                 "path": "/ellipsis"
+            },
+            {
+                "name": "ClickOutside 外部点击",
+                "path": "/click-outside"
             }
         ]
     }
