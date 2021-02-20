@@ -1,7 +1,7 @@
 <template>
     <div :class="{all: expand}" class="t-tag-select t-bsb">
         <div class="wrap">
-            <ul ref="optionsEle" class="options t-lsn t-p0">
+            <ul ref="optionsEle" class="options t-p0">
                 <li v-if="multiple && checkAll" :class="{active: checkedAll}" class="tag" @click="handleCheckAll">{{ checkAllText }}</li>
                 <li
                     v-for="item in options"
@@ -156,7 +156,7 @@ export default defineComponent({
 });
 </script>
 <style lang="less" scoped>
-@import '../../styles/var.less';
+@import '../../styles/resources.less';
 .t-tag-select {
     display: flex;
     height: 41px;
@@ -174,6 +174,7 @@ export default defineComponent({
     margin-right: 6px;
 }
 .options {
+    .t-lsn;
     display: flex;
     flex-wrap: wrap;
 }

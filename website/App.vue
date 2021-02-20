@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style lang="less">
-@import '~@/styles/var.less';
+@import '~@/styles/resources.less';
 .main-app {
     height: 100%;
     .header {

@@ -1,4 +1,4 @@
-@import '~@/styles/var.less';
+@import '~@/styles/resources.less';
 // website css reset
 html,
 body {
@@ -7,8 +7,7 @@ body {
     margin: 0;
     font-size: 16px;
 }
-ul,
-li {
+ul {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -64,9 +63,8 @@ p {
         color: @text-color;
         text-align: left;
     }
-    .ul,
-    .li {
-        list-style: inherit;
+    ul {
+        list-style: circle;
     }
     .markdown-body table {
         display: table;

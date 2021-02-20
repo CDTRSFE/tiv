@@ -54,7 +54,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-@import '~@/styles/var.less';
+@import '~@/styles/resources.less';
 .component-doc {
     display: flex;
     height: 100%;

@@ -67,7 +67,7 @@ export default defineComponent({
 });
 </script>
 <style lang="less" scoped>
-@import '../../styles/var.less';
+@import '../../styles/resources.less';
 .t-${name} {
     //
 }
