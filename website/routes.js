@@ -3,7 +3,7 @@ const comRoutes = {
     path: '/component',
     name: 'component',
     component: () => import('./components/ComponentDoc.vue'),
-    redirect: '/component/installation',
+    redirect: '/component/quick-start',
     children: [],
 };
 const routes = [

@@ -52,14 +52,30 @@ module.exports = function(source) {
     const { template, componentsOpt, style } = genComponent(result, fileName);
     return `
     <template>
-        <div class="markdown-body">${template}</div>
+        <div ref="mdEl" class="markdown-body">${template}</div>
     </template>
     <script lang="ts">
         import * as Vue from 'vue';
+        import hljs from 'highlight.js';
+
         export default {
             name: 'DocContent',
             components: {
                 ${componentsOpt}
+            },
+            mounted() {
+                this.codeHighlight();
+            },
+            beforeUpdate() {
+                this.codeHighlight();
+            },
+            methods: {
+                codeHighlight() {
+                    this.$nextTick(() => {
+                        const blocks = this.$refs.mdEl.querySelectorAll('pre code');
+                        blocks.forEach(hljs.highlightBlock);
+                    });
+                },
             }
         }
     </script>

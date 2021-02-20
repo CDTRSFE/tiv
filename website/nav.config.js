@@ -1,7 +1,7 @@
 module.exports = [
     {
-        "name": "安装",
-        "path": "/installation"
+        "name": "快速开始",
+        "path": "/quick-start"
     },
     {
         "name": "组件",

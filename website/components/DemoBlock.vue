@@ -24,7 +24,6 @@
 
 <script>
 import Clipboard from 'clipboard';
-import hljs from 'highlight.js';
 
 export default {
     name: 'DemoBlock',
@@ -47,8 +46,6 @@ export default {
             this.copyTips = 'falied!';
             this.clearTips();
         });
-        const blocks = this.$refs.codeWrapElm.querySelectorAll('code');
-        blocks.forEach(hljs.highlightBlock);
     },
     beforeUnmount() {
         this.clipboard.destroy();
