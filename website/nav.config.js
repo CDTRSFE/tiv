@@ -18,6 +18,10 @@ module.exports = [
                 "name": "TagSelect 标签选择器",
                 "path": "/tag-select"
             },
+            {
+                "name": "Pagination 分页",
+                "path": "/pagination"
+            }
         ]
     },
     {

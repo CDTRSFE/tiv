@@ -4,11 +4,13 @@ import ScaleView from '../scale-view';
 import Carousel from '../carousel';
 import TagSelect from '../tag-select';
 import ClickOutside from '../click-outside';
+import Pagination from '../pagination';
 
 const components = [
     ScaleView,
     Carousel,
     TagSelect,
+    Pagination,
 ];
 
 export default {
@@ -23,4 +25,5 @@ export {
     Carousel,
     TagSelect,
     ClickOutside,
+    Pagination,
 };

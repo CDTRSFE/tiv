@@ -79,10 +79,6 @@ app.use(TagSelect)
 app.mount('#app')
 ```
 
-+ 按需引入也需要 `tiv/styles/base.css` 基础样式。
-
-+ 所有组件在使用时需要加前缀，比如：`t-tag-select`。
-
 :::tip
 
 + 按需引入也需要 `tiv/styles/base.css` 基础样式。
