@@ -1,5 +1,7 @@
 <p align="center">
-  <img width="150" src="./website/images/tiv-logo.png" />
+  <a href="https://iamzhaoqing.github.io/tiv">
+    <img width="150" src="./website/images/tiv-logo.png" />
+  </a>
 </p>
 
 <h1 align="center">Tiv UI</h1>
@@ -12,6 +14,22 @@
 + 可视化大屏组件。
 + 使用 Typescript 开发。
 + 自定义主题。
+
+## 安装
+
+```shell
+$ npm install tiv --save
+```
+
+## 使用
+
+```js
+import { createApp } from 'vue';
+import Tiv from 'tiv';
+import 'tiv/styles/index.css';
+
+createApp().use(Tiv).mount('#app');
+```
 
 ## 本地开发
 
