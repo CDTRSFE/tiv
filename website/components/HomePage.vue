@@ -1,12 +1,16 @@
 <template>
     <div class="home-page">
-        首页
+        <readme-doc></readme-doc>
     </div>
 </template>
 
 <script>
+import ReadmeDoc from '../../README.md';
 export default {
     name: 'HomePage',
+    components: {
+        ReadmeDoc,
+    },
     data() {
         return {
 
@@ -16,4 +20,16 @@ export default {
 </script>
 
 <style scoped lang="less">
+.home-page {
+    width: 900px;
+    margin: 60px auto 40px;
+    ::v-deep(h1),
+    ::v-deep(h2) {
+        padding: 0;
+        border: 0;
+    }
+    ::v-deep(.header-anchor) {
+        display: none;
+    }
+}
 </style>
