@@ -43,7 +43,8 @@ function compileComponent(commentContent, id) {
     const scriptTpl = (script || 'const obj = {}')
         .trim()
         .replace(/export\s+default/g, 'const obj =')
-        .replace(/import ({.*}) from 'vue'/g, (s, s1) => `const ${s1} = Vue`);
+        .replace(/import (.*) from 'vue'/g, (s, s1) => `const ${s1} = Vue`)
+        .replace(/import (.*) from '(.*)'/g, (s, s1, s2) => `const ${s1} = require('${s2}')`);
 
     let styleTpl = '';
     if (style) {

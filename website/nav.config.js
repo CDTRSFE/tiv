@@ -21,6 +21,10 @@ module.exports = [
             {
                 "name": "Pagination 分页",
                 "path": "/pagination"
+            },
+            {
+                "name": "NoData 无数据",
+                "path": "/no-data"
             }
         ]
     },
