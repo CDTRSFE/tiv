@@ -16,7 +16,7 @@
     "build:com": "node ./build/rollup.config.com.js",
     "build:lib": "rollup --config ./build/rollup.config.lib.js",
     "build:docs": "rimraf website/dist && cross-env NODE_ENV=production webpack --config ./website/webpack.config.js",
-    "publish:docs": "npm run build:website && bash ./scripts/website-publish.sh",
+    "publish:docs": "npm run build:docs && bash ./scripts/website-publish.sh",
     "publish:lib": "bash ./scripts/publish.sh",
     "gen-log": "git-chglog -o CHANGELOG.md"
   },
