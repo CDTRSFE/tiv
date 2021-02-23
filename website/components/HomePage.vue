@@ -31,5 +31,8 @@ export default {
     ::v-deep(.header-anchor) {
         display: none;
     }
+    ::v-deep(ul) {
+        list-style: circle;
+    }
 }
 </style>
