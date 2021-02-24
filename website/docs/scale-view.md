@@ -1,88 +1,144 @@
 ## 可伸缩视图容器
 
-用于大屏布局的容器组件，在可视区域的大小变化时，始终保持设定的宽高比例显示，同时填充整个内容框，类似于 [object-fit: cover;](https://developer.mozilla.org/zh-CN/docs/Web/CSS/object-fit)。
+用于数据可视化页面的容器组件。
 
-大屏中使用了 rem，基准值是根据设计图和容器宽度来计算的，为了方便 px 和 rem 的换算，默认设定 1rem = 100px，计算方法是：
+### 缩放功能比较
 
-```js
-// 基准值 = 容器宽度 / 设计稿宽度 * 进率
-baseSize = containerWidth / 1920 * 100;
-```
+数据可视化页面布局是固定的，为了能在不同尺寸的设备上正常显示，并且窗口大小变化时，始终保持相同的宽高比例，同时填充整个父级容器，需要具备自动缩放能力，实现方式有两种：
 
-容器父级（组件根元素）有一个默认宽高: `width: 100vw; height: 100vh;`，在组件挂在后，以及浏览器窗口大小变化后会：
+1. 样式使用 **rem**，窗口变化后动态计算基准值，再更新根节点的 `font-size`，达到缩放效果。
+2. 直接使用 **transform: scale()** 缩放根组件。
 
-1. 设置容器的 width 和 height；
-2. 计算基准值，保存到 `window.rem`，并更新根节点 `<html>` 的 `font-size`。
+此组件使用了第二种方式，因为使用 rem 会存在以下问题：
 
-:::warning
-
-如果项目中已经有 rem 适配逻辑，或者同时存在多个 `ScaleView` 组件，设置 `enable-rem` 为 false，避免造成冲突。
-
-:::
+1. 无法使用第三方 UI 组件，比如 element-ui。
+2. canvas, echarts 等需要先换算成 px。
+3. 文本的 `font-size` 有最小值，继续缩小会导致布局错位，不方便调试界面。
 
 ### 基础用法
 
-通过 `ratio` 设置容器宽高比例。
+通过 `baseSize` 设置容器基础宽高，窗口大小变化时将根据这个值对容器做缩放处理。
 
-:::demo 容器父级的默认宽高已用样式覆盖。
+:::demo 此例中容器的宽高会在 400*220 px 的基础上做缩放处理，点击上方按钮切换父容器（.wrap）大小，预览不同缩放比例的显示效果。
 ```html
 <template>
-    <t-scale-view ratio="7:5" class="box bg-yellow">
-      <div class="bg-blue h100 center">{{ text }}</div>
-    </t-scale-view>
+    <span>父容器大小：</span>
+    <button
+        v-for="item in btns"
+        :key="item.name"
+        :class="{'active': item.height === height}"
+        class="btn"
+        @click="handleChange(item.height)"
+    >
+        {{ item.name }}
+    </button>
+    <div :style="{height}" class="bg-data-v wrap">
+        <t-scale-view ref="scaleCom" base-size="400*220" class="com">
+            <div class="content h100">
+                <t-no-data></t-no-data>
+            </div>
+        </t-scale-view>
+    </div>
 </template>
+
 <script>
-import { onMounted, ref, nextTick } from 'vue';
+import { ref } from 'vue';
+
 export default {
     setup() {
-        const text = ref('');
-        onMounted(() => {
-            text.value = `<html style="font-size: ${window.rem}px;">`;
-        });
+        const btns = ref([
+            {
+                name: 'small',
+                height: '200px',
+            },
+            {
+                name: 'medium',
+                height: '300px',
+            },
+            {
+                name: 'large',
+                height: '400px',
+            },
+        ]);
+        const height = ref('200px');
+        const scaleCom = ref();
+
+        const handleChange = (v) => {
+            height.value = v;
+            // .wrap 有 0.3s 的动画
+            setTimeout(scaleCom.value.setSize, 300);
+        };
+
         return {
-            text,
+            btns,
+            height,
+            scaleCom,
+            handleChange,
         };
     },
 };
 </script>
+
+<style scoped lang="less">
+.wrap {
+    width: 850px;
+    height: 300px;
+    transition: 0.3s;
+}
+.btn {
+    margin: 0 10px 20px 0;
+    background: tint(@theme-color, 93%);
+    padding: 8px 12px;
+    font-size: 15px;
+    color: @theme-color;
+    border: 1px solid tint(@theme-color, 60%);
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+}
+.com {
+    width: 100%;
+    height: 100%;
+}
+.btn.active {
+    background: @theme-color;
+    border-color: @theme-color;
+    color: #fff;
+}
+.content {
+    background: url('~*/images/data-v-border.png') no-repeat center center / 90% 90%;
+}
+</style>
 ```
 :::
 
-### 自定义基准值计算方法
+### 缩放 body
 
-可以通过  `base-method` 覆盖默认的基准值计算方法。
-
-:::demo
+某些组件可能会把节点添加到 body，因为这些节点不再是 `t-scale-wiew`  组件的子节点，所以无法缩放，可设置属性 `scale-body = "true"` 将 body 作为缩放容器解决 。
 
 ```html
 <template>
-    <t-scale-view :base-method="containerWidth => containerWidth / 1920 * 10" class="box bg-yellow">
-      <div class="bg-blue h100 center">{{ text }}</div>
+    <t-scale-view scale-body>
+        <div class="content"></div>
     </t-scale-view>
 </template>
-<script>
-import { onMounted, ref, nextTick } from 'vue';
-export default {
-    setup() {
-        const text = ref('');
-        onMounted(() => {
-            text.value = `<html style="font-size: ${window.rem}px;">`;
-        });
-        return {
-            text,
-        };
-    },
-};
-</script>
-```
 
-:::
+<script>
+export default {};
+</script>
+
+```
 
 ### 属性
 
-| 参数        | 说明                  | 类型                         | 可选值 | 默认值 |
-| ----------- | --------------------- | ---------------------------- | ------ | ------ |
-| ratio       | 容器的宽高比例        | string                       | -      | 1.75:1 |
-| enable-rem  | 是否启用 rem          | boolean                      | -      | true   |
-| base-method | 设置 rem 基准值的方法 | Function({ containerWidth }) | -      | -      |
+| 参数       | 说明                                                         | 类型    | 可选值     | 默认值    |
+| ---------- | ------------------------------------------------------------ | ------- | ---------- | --------- |
+| base-size  | 容器的基础宽高，一般设置成设计图的宽高，格式为 width*height，单位 px | string  | -          | 1920*1080 |
+| scale-body | 是否将 body 作为缩放容器。                                   | boolean | true/false | false     |
+
+### 方法
+
+| 名称    | 说明                                                         | 参数 | 返回值 |
+| ------- | ------------------------------------------------------------ | ---- | ------ |
+| setSize | 手动更新容器样式 (width, height, scale)，父容器宽高变化不是由窗口大小变化引起的情况下，需要调用。 | -    | -      |
 

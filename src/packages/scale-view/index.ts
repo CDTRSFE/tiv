@@ -1,5 +1,5 @@
 import { App } from 'vue';
-import ScaleView from './ScaleView.vue';
+import ScaleView from './Index.vue';
 import type { SFCWithInstall } from '../utils/types';
 
 ScaleView.install = (app: App): void => {
