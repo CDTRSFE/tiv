@@ -19,13 +19,10 @@
 </template>
 
 <script>
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 export default {
     setup() {
         const pageIndex = ref(1);
-        onMounted(() => {
-            document.querySelector('html').style.fontSize = '100px';
-        });
         const changeHandle = (i) => {
             pageIndex.value = i;
         };
@@ -63,13 +60,10 @@ export default {
 </template>
 
 <script>
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 export default {
     setup() {
         const pageIndex = ref(1);
-        onMounted(() => {
-            document.querySelector('html').style.fontSize = '100px';
-        });
         const changeHandle = (i) => {
             pageIndex.value = i;
         };
@@ -112,13 +106,10 @@ export default {
 </template>
 
 <script>
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 export default {
     setup() {
         const pageIndex = ref(1);
-        onMounted(() => {
-            document.querySelector('html').style.fontSize = '100px';
-        });
         const changeHandle = (i) => {
             pageIndex.value = i;
         };

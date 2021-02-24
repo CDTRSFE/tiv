@@ -91,7 +91,7 @@ export default defineComponent({
     background-image: url('./images/@{name}.png');
 }
 .com-height {
-    height: 0.32rem;
+    height: 32px;
 }
 .t-pagination {
     .t-bsb;
@@ -110,7 +110,7 @@ export default defineComponent({
     .item {
         .com-height;
         .t-m0;
-        width: 0.43rem;
+        width: 43px;
         background: no-repeat center center / 100% 100%;
         cursor: pointer;
     }
@@ -124,7 +124,7 @@ export default defineComponent({
 .left-bg,
 .right-bg {
     flex: 1;
-    height: 0.256rem;
+    height: 25.6px;
     background: no-repeat left center / auto;
     transform: rotate(180deg);
 }
@@ -135,7 +135,7 @@ export default defineComponent({
 .next {
     .com-height;
     flex: 1;
-    width: 0.64rem;
+    width: 64px;
     background: no-repeat center center / auto;
     cursor: pointer;
 }
@@ -163,7 +163,7 @@ export default defineComponent({
     .space {
         .com-height;
         .t-m0;
-        width: 0.1rem;
+        width: 10px;
         background: repeat-x center center / 100% 100%;
         .bg('circle-space');
     }
@@ -176,7 +176,7 @@ export default defineComponent({
     .prev,
     .next {
         .bg('polygon-prev');
-        width: 0.38rem;
+        width: 38px;
         background-size: auto 100%;
         &:not(.disabled):hover {
             .bg('polygon-prev-active');
@@ -184,9 +184,9 @@ export default defineComponent({
     }
     .item {
         .t-flex;
-        width: 0.38rem;
-        margin: 0 0.04rem;
-        font-size: 0.16rem;
+        width: 38px;
+        margin: 0 4px;
+        font-size: 16px;
         color: desaturate(@dv-theme-color, 40%);
         .bg('polygon-pager');
         &:hover {
