@@ -211,8 +211,8 @@ export default defineComponent({
     margin-right: 4px;
 }
 .icon {
+    .t-transition;
     display: inline-block;
-    transition: 0.3s;
     &.up {
         transform: rotate(180deg);
     }

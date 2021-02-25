@@ -27,7 +27,7 @@
         v-for="item in btns"
         :key="item.name"
         :class="{'active': item.height === height}"
-        class="btn"
+        class="demo-btn btn"
         @click="handleChange(item.height)"
     >
         {{ item.name }}
@@ -86,24 +86,11 @@ export default {
     transition: 0.3s;
 }
 .btn {
-    margin: 0 10px 20px 0;
-    background: tint(@theme-color, 93%);
-    padding: 8px 12px;
-    font-size: 15px;
-    color: @theme-color;
-    border: 1px solid tint(@theme-color, 60%);
-    border-radius: 3px;
-    outline: none;
-    cursor: pointer;
+    margin-bottom: 20px;
 }
 .com {
     width: 100%;
     height: 100%;
-}
-.btn.active {
-    background: @theme-color;
-    border-color: @theme-color;
-    color: #fff;
 }
 .content {
     background: url('~*/images/data-v-border.png') no-repeat center center / 90% 90%;

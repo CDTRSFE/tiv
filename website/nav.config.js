@@ -25,6 +25,10 @@ module.exports = [
             {
                 "name": "NoData 无数据",
                 "path": "/no-data"
+            },
+            {
+                "name": "Overlay 遮罩层",
+                "path": "/overlay"
             }
         ]
     },

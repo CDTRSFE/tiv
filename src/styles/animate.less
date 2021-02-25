@@ -1,0 +1,36 @@
+@import './resources.less';
+
+// 模糊
+// 加 transition 会抖动？
+.t-blur-in {
+    // .t-transition;
+    filter: blur(5px);
+}
+.t-blur-out {
+    // .t-transition;
+    filter: blur(0);
+}
+// 淡入淡出过度
+.overlay-enter-active,
+.overlay-leave-active {
+    .t-transition;
+}
+.overlay-enter-from,
+.overlay-leave-to {
+    opacity: 0;
+}
+.overlay-enter-to {
+    opacity: 1;
+}
+// 上下平移过度
+.move-enter-active,
+.move-leave-active {
+    .t-transition;
+}
+.move-enter-from,
+.move-leave-to {
+    transform: translateY(-20px);
+}
+.move-enter-to {
+    transform: translateY(0);
+}

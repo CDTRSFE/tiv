@@ -6,6 +6,7 @@ import TagSelect from '../tag-select';
 import ClickOutside from '../click-outside';
 import Pagination from '../pagination';
 import NoData from '../no-data';
+import Overlay from '../overlay';
 
 const components = [
     ScaleView,
@@ -13,6 +14,7 @@ const components = [
     TagSelect,
     Pagination,
     NoData,
+    Overlay,
 ];
 
 export default {
@@ -29,4 +31,5 @@ export {
     ClickOutside,
     Pagination,
     NoData,
+    Overlay,
 };

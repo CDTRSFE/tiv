@@ -109,7 +109,7 @@ p {
     background: #c2f3cb;
 }
 .bg-blue {
-    background: @theme-bg;
+    background-color: @theme-bg;
 }
 .color-blue {
     color: @theme-color;
@@ -124,11 +124,38 @@ p {
     justify-content: center;
 }
 .bg-data-v {
-    background: #0c2346;
+    background-color: #0c2346;
 }
 .bg-data-v-item {
     background: #0a3064;
 }
 .data-v-color {
     color: #1cafd8;
+}
+.border-theme {
+    border: 1px solid tint(@theme-color, 60%);
+}
+.demo-btn {
+    .border-theme;
+    margin: 0 10px 0 0;
+    background: tint(@theme-color, 93%);
+    padding: 0 14px;
+    line-height: 32px;
+    font-size: 13px;
+    color: @theme-color;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    &.active {
+        background: @theme-color;
+        border-color: @theme-color;
+        color: #fff;
+    }
+}
+.empty-dialog {
+    width: 400px;
+    height: 300px;
+    margin: calc(40vh - 150px) auto;
+    background: #fff;
+    border-radius: 7px;
 }
