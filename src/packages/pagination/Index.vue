@@ -90,26 +90,26 @@ export default defineComponent({
 .bg(@name) {
     background-image: url('./images/@{name}.png');
 }
-.com-height {
+.com-height() {
     height: 32px;
 }
 .t-pagination {
-    .t-bsb;
-    .t-flex;
-    .com-height;
+    .t-bsb();
+    .t-flex();
+    .com-height();
     .page {
-        .t-flex;
+        .t-flex();
         flex-shrink: 0;
     }
     .pagers {
-        .com-height;
-        .t-flex;
-        .t-lsn;
-        .t-usn;
+        .com-height();
+        .t-flex();
+        .t-lsn();
+        .t-usn();
     }
     .item {
-        .com-height;
-        .t-m0;
+        .com-height();
+        .t-m0();
         width: 43px;
         background: no-repeat center center / 100% 100%;
         cursor: pointer;
@@ -133,7 +133,7 @@ export default defineComponent({
 }
 .prev,
 .next {
-    .com-height;
+    .com-height();
     flex: 1;
     width: 64px;
     background: no-repeat center center / auto;
@@ -161,8 +161,8 @@ export default defineComponent({
         .bg('circle-pager-active');
     }
     .space {
-        .com-height;
-        .t-m0;
+        .com-height();
+        .t-m0();
         width: 10px;
         background: repeat-x center center / 100% 100%;
         .bg('circle-space');
@@ -183,7 +183,7 @@ export default defineComponent({
         }
     }
     .item {
-        .t-flex;
+        .t-flex();
         width: 38px;
         margin: 0 4px;
         font-size: 16px;

@@ -2,8 +2,8 @@
     <div v-if="scaleBody" :style="containerStyle" class="t-scale-view">
         <slot v-if="show"></slot>
     </div>
-    <div v-else class="t-scale-view scale-box t-p0">
-        <div ref="containerEle" :style="containerStyle" class="t-bsb container">
+    <div v-else class="t-scale-view scale-box">
+        <div ref="containerEle" :style="containerStyle" class="container">
             <slot v-if="show"></slot>
         </div>
     </div>
@@ -96,6 +96,7 @@ export default defineComponent({
 .t-scale-view {
     overflow: hidden;
     .container {
+        .t-bsb();
         flex: 0 0 auto;
     }
 }

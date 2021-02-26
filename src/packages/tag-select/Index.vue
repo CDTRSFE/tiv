@@ -1,7 +1,7 @@
 <template>
-    <div :class="{all: expand}" class="t-tag-select t-bsb">
+    <div :class="{all: expand}" class="t-tag-select">
         <div class="wrap">
-            <ul ref="optionsEle" class="options t-p0">
+            <ul ref="optionsEle" class="options">
                 <li v-if="multiple && checkAll" :class="{active: checkedAll}" class="tag" @click="handleCheckAll">{{ checkAllText }}</li>
                 <li
                     v-for="item in options"
@@ -14,7 +14,7 @@
                 </li>
             </ul>
         </div>
-        <div v-if="foldable" class="t-bsb expand-btn" @click="handleToggleExpand">
+        <div v-if="foldable" class="expand-btn" @click="handleToggleExpand">
             <span v-if="expand" class="text">{{ collapseText }}</span>
             <span v-else class="text">{{ expandText }}</span>
             <i :class="{up: expand}" class="icon tiv-font t-icon-arrow"></i>
@@ -158,6 +158,7 @@ export default defineComponent({
 <style lang="less" scoped>
 @import '../../styles/resources.less';
 .t-tag-select {
+    .t-bsb();
     display: flex;
     height: 41px;
     margin-bottom: -6px;
@@ -174,7 +175,8 @@ export default defineComponent({
     margin-right: 6px;
 }
 .options {
-    .t-lsn;
+    .t-lsn();
+    .t-p0();
     display: flex;
     flex-wrap: wrap;
 }
@@ -199,6 +201,7 @@ export default defineComponent({
     cursor: not-allowed;
 }
 .expand-btn {
+    .t-bsb();
     display: flex;
     flex-shrink: 0;
     height: 32px;
@@ -211,7 +214,7 @@ export default defineComponent({
     margin-right: 4px;
 }
 .icon {
-    .t-transition;
+    .t-transition();
     display: inline-block;
     &.up {
         transform: rotate(180deg);

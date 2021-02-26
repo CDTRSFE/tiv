@@ -27,8 +27,8 @@ export default defineComponent({
 <style lang="less" scoped>
 @import '../../styles/resources.less';
 .t-no-data {
-    .t-bsb;
-    .t-flex;
+    .t-bsb();
+    .t-flex();
     flex-direction: column;
     width: 100%;
     height: 100%;

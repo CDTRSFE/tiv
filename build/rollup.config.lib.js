@@ -36,6 +36,7 @@ module.exports = [
             vue({
                 target: 'browser',
                 exposeFilename: false,
+                preprocessStyles: true,
             }),
             less({
                 output: false,
@@ -101,6 +102,7 @@ module.exports = [
             vue({
                 target: 'browser',
                 exposeFilename: false,
+                preprocessStyles: true,
             }),
             less({
                 output: 'dist/styles/index.css',

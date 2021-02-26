@@ -35,7 +35,7 @@ const inputOptions = name => ({
         vue({
             target: 'browser',
             exposeFilename: false,
-            // preprocessStyles: true,
+            preprocessStyles: true,
         }),
         less({
             output: `dist/styles/${name === 'tiv' ? 'index' : name}.css`,
@@ -50,13 +50,20 @@ const inputOptions = name => ({
 });
 
 // 打包单个组件
-comNames.forEach(async name => {
-    // spinner.info(chalk.blue(`Build ${name}...`));
+let index = 0;
+const build = async(name) => {
+    spinner.info(chalk.blue(`Build ${name}...\n`));
     const bundle = await rollup.rollup(inputOptions(name));
     await bundle.write({
         dir: `dist/lib/${name}`,
         format: 'es',
     });
     await bundle.close();
-    spinner.info(chalk.blue(`${name} done`));
-});
+
+    if (comNames[index + 1]) {
+        build(comNames[++index]);
+    } else {
+        spinner.info(chalk.blue('Components building completed\n'));
+    }
+};
+build(comNames[index]);

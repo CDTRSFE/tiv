@@ -1,6 +1,6 @@
 <template>
-    <div ref="wrapEle" class="t-scale-view t-p0">
-        <div ref="containerEle" :style="containerStyle" class="t-bsb">
+    <div ref="wrapEle" class="t-scale-view">
+        <div ref="containerEle" :style="containerStyle" class="container">
             <slot v-if="show"></slot>
         </div>
     </div>
@@ -87,12 +87,17 @@ export default defineComponent({
 });
 </script>
 <style lang="less" scoped>
+@import '../../styles/resources.less';
 .t-scale-view {
+    .t-p0();
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+}
+.container {
+    .t-bsb();
 }
 </style>

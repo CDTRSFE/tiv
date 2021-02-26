@@ -1,6 +1,6 @@
 <template>
     <teleport :disabled="!appendToBody" to="body">
-        <transition name="fade" @after-enter="$emit('opened')" @after-leave="closed">
+        <transition name="t-fade" @after-enter="$emit('opened')" @after-leave="closed">
             <div
                 v-show="modelValue"
                 ref="overlayEle"
@@ -9,7 +9,7 @@
                 class="t-overlay"
                 @click="handleClickModal"
             >
-                <transition name="move">
+                <transition name="t-move">
                     <div v-show="modelValue" class="overlay-content" @click.stop.self="handleClickModal">
                         <slot v-if="!destroySlot"></slot>
                     </div>
