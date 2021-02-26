@@ -4,8 +4,8 @@
             <div
                 v-show="modelValue"
                 ref="overlayEle"
-                :class="[customClass, {'t-overlay-bg': !blur}]"
-                :style="customStyle"
+                :class="[$attrs.class, {'t-overlay-bg': !blur}]"
+                :style="$attrs.style"
                 class="t-overlay"
                 @click="handleClickModal"
             >
@@ -48,14 +48,6 @@ export default defineComponent({
         closeOnClickModal: {
             type: Boolean,
             default: true,
-        },
-        customClass: {
-            type: [Array, String, Object],
-            default: '',
-        },
-        customStyle: {
-            type: [Array, Object],
-            default: () => ({}),
         },
         blur: {
             type: String,

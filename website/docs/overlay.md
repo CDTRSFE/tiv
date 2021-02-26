@@ -89,19 +89,23 @@ export default {
 
 :::
 
+:::tip
+
+组件没有提供类似 `custom-class` 的属性，对遮罩层有自定义样式需求的，比如修改默认的背景、设置遮罩的层级 (z-index) 等，可以直接在组件上使用 class 或 style 即可，遮罩层是否被插入到 body 元素上都有效。
+
+:::
+
 ### 属性
 
-| 参数                  | 说明                                            | 类型                    | 可选值       | 默认值 |
-| --------------------- | ----------------------------------------------- | ----------------------- | ------------ | ------ |
-| model-value / v-model | 是否显示遮罩层                                  | boolean                 | true / false | false  |
-| append-to-body        | 是否将遮罩层插入到 body 元素上                  | boolean                 | true / false | false  |
-| close-on-press-escape | 是否可以使用 ESC 键关闭遮罩层                   | boolean                 | true / false | true   |
-| destroy-on-close      | 是否在关闭后销毁通过 slot 传入的内容            | boolean                 | true / false | false  |
-| lock-scroll           | 是否锁定背景滚动                                | boolean                 | true / false | true   |
-| close-on-click-modal  | 是否可以点击自身关闭遮罩层                      | boolean                 | true / false | true   |
-| custom-class          | 自定义类名，和 Vue `v-bind:class` 用法相同      | array / object / string | -            | -      |
-| custom-style          | 自定义内联样式，和 Vue `v-bind:style` 用法相同  | array / object          | -            | -      |
-| blur                  | 作为背景被模糊处理的节点选择器名称，比如 `#app` | string                  | -            | -      |
+| 参数                  | 说明                                            | 类型    | 可选值       | 默认值 |
+| --------------------- | ----------------------------------------------- | ------- | ------------ | ------ |
+| model-value / v-model | 是否显示遮罩层                                  | boolean | true / false | false  |
+| append-to-body        | 是否将遮罩层插入到 body 元素上                  | boolean | true / false | false  |
+| close-on-press-escape | 是否可以使用 ESC 键关闭遮罩层                   | boolean | true / false | true   |
+| destroy-on-close      | 是否在关闭后销毁通过 slot 传入的内容            | boolean | true / false | false  |
+| lock-scroll           | 是否锁定背景滚动                                | boolean | true / false | true   |
+| close-on-click-modal  | 是否可以点击自身关闭遮罩层                      | boolean | true / false | true   |
+| blur                  | 作为背景被模糊处理的节点选择器名称，比如 `#app` | string  | -            | -      |
 
 ### 事件
 

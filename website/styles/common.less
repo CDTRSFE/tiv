@@ -45,7 +45,8 @@ p {
         border-radius: 4px;
         // border-left: #fe6c6f 4px solid;
         margin: 20px 0;
-        color: @text-color;
+        line-height: 1.6;
+        color: tint(@text-color, 20%);
         font-size: 14px;
         & p {
             margin: 12px 0;
@@ -54,15 +55,18 @@ p {
     .tip {
         background-color: @theme-bg;
     }
-    .warning code,
-    .tip code {
-        background-color: rgba(255, 255, 255, 0.7);
-    }
+    // .warning code,
+    // .tip code {
+    //     background-color: rgba(255, 255, 255, 0.7);
+    // }
     tr th {
         min-width: 80px;
         font-weight: 400;
         color: @text-color;
         text-align: left;
+    }
+    tr td:first-child {
+        white-space: nowrap;
     }
     ul {
         list-style: circle;
