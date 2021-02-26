@@ -1,6 +1,6 @@
 <template>
     <teleport :disabled="!appendToBody" to="body">
-        <transition name="overlay" @after-enter="$emit('opened')" @after-leave="closed">
+        <transition name="fade" @after-enter="$emit('opened')" @after-leave="closed">
             <div
                 v-show="modelValue"
                 ref="overlayEle"
