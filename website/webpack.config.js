@@ -125,6 +125,7 @@ const config = {
         // }),
         new HtmlWebpackPlugin({
             template: './website/index.html',
+            favicon: path.resolve(__dirname, './images/tiv-logo.png'),
             // filename: './index.html',
         }),
         new webpack.DefinePlugin({
