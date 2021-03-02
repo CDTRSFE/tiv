@@ -2,8 +2,8 @@
     <div v-if="scaleBody" :style="containerStyle" class="t-scale-view">
         <slot v-if="show"></slot>
     </div>
-    <div v-else class="t-scale-view scale-box">
-        <div ref="containerEle" :style="containerStyle" class="container">
+    <div v-else class="t-scale-view t-scale-box">
+        <div ref="containerEle" :style="containerStyle" class="t-container">
             <slot v-if="show"></slot>
         </div>
     </div>
@@ -91,18 +91,3 @@ export default defineComponent({
     },
 });
 </script>
-<style lang="less" scoped>
-@import '../../styles/resources.less';
-.t-scale-view {
-    overflow: hidden;
-    .container {
-        .t-bsb();
-        flex: 0 0 auto;
-    }
-}
-.scale-box {
-    .t-flex;
-    width: 100vw;
-    height: 100vh;
-}
-</style>

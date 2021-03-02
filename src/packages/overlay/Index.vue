@@ -10,7 +10,7 @@
                 @click="handleClickModal"
             >
                 <transition name="t-move">
-                    <div v-show="modelValue" class="overlay-content" @click.stop.self="handleClickModal">
+                    <div v-show="modelValue" @click.stop.self="handleClickModal">
                         <slot v-if="!destroySlot"></slot>
                     </div>
                 </transition>
@@ -121,17 +121,3 @@ export default defineComponent({
     },
 });
 </script>
-<style lang="less" scoped>
-.t-overlay {
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    height: 100%;
-    overflow: auto;
-    &.t-overlay-bg {
-        background-color: rgba(0, 0, 0, 0.5);
-    }
-}
-</style>

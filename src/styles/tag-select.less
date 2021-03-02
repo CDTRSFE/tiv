@@ -1,0 +1,64 @@
+@import './common/resources.less';
+.t-tag-select {
+    .t-bsb();
+    display: flex;
+    height: 41px;
+    margin-bottom: -6px;
+    line-height: 20px;
+    font-size: 14px;
+    overflow: hidden;
+    &.t-all {
+        height: auto;
+        overflow: auto;
+    }
+    .t-wrap {
+        flex: 1;
+        margin-right: 6px;
+    }
+    .t-options {
+        .t-lsn();
+        .t-p0();
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .t-tag {
+        padding: 6px 8px;
+        margin: 0 10px 10px 0;
+        border-radius: 3px;
+        cursor: pointer;
+        &:not(.t-active, .t-disabled):hover {
+            color: @theme-color;
+        }
+    }
+    .t-active {
+        background: @theme-color;
+        color: #fff;
+        &.t-disabled {
+            background: #f5f5f5;
+        }
+    }
+    .t-disabled {
+        color: #c0c4cc;
+        cursor: not-allowed;
+    }
+    .t-expand-btn {
+        .t-bsb();
+        display: flex;
+        flex-shrink: 0;
+        height: 32px;
+        padding: 6px 0;
+        color: @theme-color;
+        cursor: pointer;
+        user-select: none;
+    }
+    .t-text {
+        margin-right: 4px;
+    }
+    .t-icon {
+        .t-transition();
+        display: inline-block;
+        &.t-up {
+            transform: rotate(180deg);
+        }
+    }
+}

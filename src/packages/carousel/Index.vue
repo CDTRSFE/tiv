@@ -1,9 +1,9 @@
 <template>
     <div class="t-carousel" @mouseenter="hoverPause && pause()" @mouseleave="hoverPause && run()">
-        <div ref="boxEle" :style="boxStyle" class="box">
-            <div :style="contentStyle" :class="[isRow ? 'row' : '', scroll ? 'animate-' + direction : '']">
-                <div ref="contentEle" class="content"><slot></slot></div>
-                <div v-if="scroll" class="content"><slot></slot></div>
+        <div ref="boxEle" :style="boxStyle" class="t-box">
+            <div :style="contentStyle" :class="[isRow ? 't-row' : '']">
+                <div ref="contentEle" class="t-content"><slot></slot></div>
+                <div v-if="scroll" class="t-content"><slot></slot></div>
             </div>
         </div>
     </div>
@@ -120,55 +120,3 @@ export default defineComponent({
     },
 });
 </script>
-<style lang="less" scoped>
-.t-carousel {
-    overflow: hidden;
-    .box {
-        width: 100%;
-        height: 100%;
-    }
-    .row {
-        display: inline-flex;
-    }
-    .content {
-        overflow: hidden;
-    }
-}
-</style>
-<style>
-@keyframes t-carousel-move-left {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
-}
-
-@keyframes t-carousel-move-right {
-    0% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
-}
-
-@keyframes t-carousel-move-up {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(-50%);
-    }
-}
-
-@keyframes t-carousel-move-down {
-    0% {
-        transform: translateY(-100%);
-    }
-    100% {
-        transform: translateY(-50%);
-    }
-}
-</style>

@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const childProcess = require('child_process');
 
 const pathRes = p => path.resolve(__dirname, p);
 
@@ -10,12 +11,7 @@ fs.copyFileSync(
 
 const newContent = fs.readFileSync(pathRes('../src/packages/tiv/index.ts'))
     .toString()
-    .replace('import \'./style.ts\';\n', '')
     .replace(/\.\.\//g, './');
 fs.writeFileSync(pathRes('../dist/lib/index.d.ts'), newContent);
 
-const libIndex = fs.readFileSync(pathRes('../dist/lib/index.js'))
-    .toString()
-    .replace('require(\'./style.ts\');\n', '')
-    .replace(/\.\.\//g, './');
-fs.writeFileSync(pathRes('../dist/lib/index.js'), libIndex);
+childProcess.spawn('cp', ['-r', 'src/packages', 'dist']);

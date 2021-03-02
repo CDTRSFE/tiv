@@ -61,7 +61,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-@import '~@/styles/resources.less';
+@import '~@/styles/common/resources.less';
 .side-nav {
     display: flex;
     flex-direction: column;

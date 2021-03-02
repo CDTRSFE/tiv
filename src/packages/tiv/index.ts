@@ -1,4 +1,4 @@
-import './style.ts';
+// import './style.ts';
 import type { App } from 'vue';
 import ScaleView from '../scale-view';
 import Carousel from '../carousel';

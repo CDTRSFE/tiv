@@ -1,24 +1,24 @@
 <template>
-    <div :class="'type-' + type" class="t-pagination">
-        <div class="left-bg"></div>
-        <div class="page">
-            <div v-if="pageIndex === 1" class="prev disabled"></div>
-            <div v-else class="prev" @click="handelChange(pageIndex - 1)"></div>
-            <div class="space"></div>
-            <div class="space"></div>
-            <ul class="pagers">
+    <div :class="'t-type-' + type" class="t-pagination">
+        <div class="t-left-bg"></div>
+        <div class="t-page">
+            <div v-if="pageIndex === 1" class="t-prev t-disabled"></div>
+            <div v-else class="t-prev" @click="handelChange(pageIndex - 1)"></div>
+            <div class="t-space"></div>
+            <div class="t-space"></div>
+            <ul class="t-pagers">
                 <template v-for="p in pagers" :key="p">
-                    <li :class="{active: pageIndex === p}" class="item" @click="handelChange(p)">
-                        <p class="text">{{ p }}</p>
+                    <li :class="{'t-active': pageIndex === p}" class="t-item" @click="handelChange(p)">
+                        <p class="t-text">{{ p }}</p>
                     </li>
-                    <li class="space"></li>
+                    <li class="t-space"></li>
                 </template>
             </ul>
-            <div class="space"></div>
-            <div v-if="pageIndex === pagerLength" class="next disabled"></div>
-            <div v-else class="next" @click="handelChange(pageIndex + 1)"></div>
+            <div class="t-space"></div>
+            <div v-if="pageIndex === pagerLength" class="t-next t-disabled"></div>
+            <div v-else class="t-next" @click="handelChange(pageIndex + 1)"></div>
         </div>
-        <div class="right-bg"></div>
+        <div class="t-right-bg"></div>
     </div>
 </template>
 <script lang='ts'>
@@ -85,120 +85,3 @@ export default defineComponent({
     },
 });
 </script>
-<style lang="less" scoped>
-@import '../../styles/resources.less';
-.bg(@name) {
-    background-image: url('./images/@{name}.png');
-}
-.com-height() {
-    height: 32px;
-}
-.t-pagination {
-    .t-bsb();
-    .t-flex();
-    .com-height();
-    .page {
-        .t-flex();
-        flex-shrink: 0;
-    }
-    .pagers {
-        .com-height();
-        .t-flex();
-        .t-lsn();
-        .t-usn();
-    }
-    .item {
-        .com-height();
-        .t-m0();
-        width: 43px;
-        background: no-repeat center center / 100% 100%;
-        cursor: pointer;
-    }
-    .text {
-        display: none;
-    }
-    .disabled {
-        cursor: not-allowed;
-    }
-}
-.left-bg,
-.right-bg {
-    flex: 1;
-    height: 25.6px;
-    background: no-repeat left center / auto;
-    transform: rotate(180deg);
-}
-.right-bg {
-    transform: rotate(0);
-}
-.prev,
-.next {
-    .com-height();
-    flex: 1;
-    width: 64px;
-    background: no-repeat center center / auto;
-    cursor: pointer;
-}
-.next {
-    transform: rotate(180deg);
-}
-.type-circle {
-    .left-bg,
-    .right-bg {
-        .bg('circle-left-bg');
-    }
-    .prev,
-    .next {
-        .bg('circle-prev');
-        &:not(.disabled):hover {
-            .bg('circle-prev-active');
-        }
-    }
-    .item {
-        .bg('circle-pager');
-    }
-    .active {
-        .bg('circle-pager-active');
-    }
-    .space {
-        .com-height();
-        .t-m0();
-        width: 10px;
-        background: repeat-x center center / 100% 100%;
-        .bg('circle-space');
-    }
-}
-.type-polygon {
-    .left-bg,
-    .right-bg {
-        .bg('polygon-left-bg');
-    }
-    .prev,
-    .next {
-        .bg('polygon-prev');
-        width: 38px;
-        background-size: auto 100%;
-        &:not(.disabled):hover {
-            .bg('polygon-prev-active');
-        }
-    }
-    .item {
-        .t-flex();
-        width: 38px;
-        margin: 0 4px;
-        font-size: 16px;
-        color: desaturate(@dv-theme-color, 40%);
-        .bg('polygon-pager');
-        &:hover {
-            color: @dv-theme-color;
-        }
-    }
-    .active {
-        .bg('polygon-pager-active');
-        color: @dv-theme-color;
-    }
-    .text {
-        display: block;
-    }
-}
-</style>

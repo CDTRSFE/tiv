@@ -2,7 +2,7 @@ const path = require('path');
 const typescript = require('rollup-plugin-typescript2');
 const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const vue = require('rollup-plugin-vue');
-const less = require('rollup-plugin-less');
+// const less = require('rollup-plugin-less');
 const commonjs = require('@rollup/plugin-commonjs');
 const { terser } = require('rollup-plugin-terser');
 const pkg = require('../package.json');
@@ -10,8 +10,8 @@ const deps = Object.keys(pkg.dependencies);
 const { pkgNames } = require('./pkg-name');
 
 module.exports = [
-    // 生成 d.ts 文件
-    // esm.js 全量包，不包括 vue 和第三方依赖
+    // 生成 d.ts 文件、
+    // 生成 esm.js 全量包（不包括 vue 和第三方依赖）
     {
         input: path.resolve(__dirname, '../src/packages/tiv/index.ts'),
         output: {
@@ -34,12 +34,7 @@ module.exports = [
                 abortOnError: false,
             }),
             vue({
-                target: 'browser',
-                exposeFilename: false,
-                preprocessStyles: true,
-            }),
-            less({
-                output: false,
+                css: false,
             }),
         ],
         external(id) {
@@ -65,11 +60,7 @@ module.exports = [
                 },
             }),
             vue({
-                target: 'browser',
-                exposeFilename: false,
-            }),
-            less({
-                output: false,
+                css: false,
             }),
         ],
         external(id) {
@@ -100,22 +91,7 @@ module.exports = [
                 },
             }),
             vue({
-                target: 'browser',
-                exposeFilename: false,
-                preprocessStyles: true,
-            }),
-            less({
-                output: 'dist/styles/index.css',
-            }),
-        ],
-    },
-    // todo
-    // 公共样式
-    {
-        input: path.resolve(__dirname, '../src/packages/tiv/style.ts'),
-        plugins: [
-            less({
-                output: 'dist/styles/base.css',
+                css: false,
             }),
         ],
     },

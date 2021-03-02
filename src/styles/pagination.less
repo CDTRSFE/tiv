@@ -1,0 +1,115 @@
+@import './common/resources.less';
+.t-pagination-bg(@name) {
+    background-image: url('../packages/pagination/images/@{name}.png');
+}
+.pagination-height() {
+    height: 32px;
+}
+.t-pagination {
+    .t-bsb();
+    .t-flex();
+    .pagination-height();
+    .t-page {
+        .t-flex();
+        flex-shrink: 0;
+    }
+    .t-pagers {
+        .pagination-height();
+        .t-flex();
+        .t-lsn();
+        .t-usn();
+    }
+    .t-item {
+        .pagination-height();
+        .t-m0();
+        width: 43px;
+        background: no-repeat center center / 100% 100%;
+        cursor: pointer;
+    }
+    .t-text {
+        display: none;
+    }
+    .t-disabled {
+        cursor: not-allowed;
+    }
+    &.t-type-circle {
+        .t-left-bg,
+        .t-right-bg {
+            .t-pagination-bg('circle-left-bg');
+        }
+        .t-prev,
+        .t-next {
+            .t-pagination-bg('circle-prev');
+            &:not(.t-disabled):hover {
+                .t-pagination-bg('circle-prev-active');
+            }
+        }
+        .t-item {
+            .t-pagination-bg('circle-pager');
+        }
+        .t-active {
+            .t-pagination-bg('circle-pager-active');
+        }
+        .t-space {
+            .pagination-height();
+            .t-m0();
+            width: 10px;
+            background: repeat-x center center / 100% 100%;
+            .t-pagination-bg('circle-space');
+        }
+    }
+    .t-left-bg,
+    .t-right-bg {
+        flex: 1;
+        height: 25.6px;
+        background: no-repeat left center / auto;
+        transform: rotate(180deg);
+    }
+    .t-right-bg {
+        transform: rotate(0);
+    }
+    .t-prev,
+    .t-next {
+        .pagination-height();
+        flex: 1;
+        width: 64px;
+        background: no-repeat center center / auto;
+        cursor: pointer;
+    }
+    .t-next {
+        transform: rotate(180deg);
+    }
+    &.t-type-polygon {
+        .t-left-bg,
+        .t-right-bg {
+            .t-pagination-bg('polygon-left-bg');
+        }
+        .t-prev,
+        .t-next {
+            .t-pagination-bg('polygon-prev');
+            width: 38px;
+            background-size: auto 100%;
+            &:not(.t-disabled):hover {
+                .t-pagination-bg('polygon-prev-active');
+            }
+        }
+        .t-item {
+            .t-flex();
+            width: 38px;
+            margin: 0 4px;
+            font-size: 16px;
+            color: desaturate(@dv-theme-color, 40%);
+            .t-pagination-bg('polygon-pager');
+            &:hover {
+                color: @dv-theme-color;
+            }
+        }
+        .t-active {
+            .t-pagination-bg('polygon-pager-active');
+            color: @dv-theme-color;
+        }
+        .t-text {
+            display: block;
+        }
+    }
+}

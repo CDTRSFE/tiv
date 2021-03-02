@@ -2,7 +2,7 @@ const path = require('path');
 const typescript = require('rollup-plugin-typescript2');
 const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const vue = require('rollup-plugin-vue');
-const less = require('rollup-plugin-less');
+// const less = require('rollup-plugin-less');
 const rollup = require('rollup');
 const alias = require('@rollup/plugin-alias');
 const ora = require('ora');
@@ -29,16 +29,8 @@ const inputOptions = name => ({
                 abortOnError: false,
             },
         }),
-        // css({
-        //     output: 'index.css',
-        // }),
         vue({
-            target: 'browser',
-            exposeFilename: false,
-            preprocessStyles: true,
-        }),
-        less({
-            output: `dist/styles/${name === 'tiv' ? 'index' : name}.css`,
+            css: false,
         }),
         alias({
             // todo 居然不可以使用 @ 作为别名？

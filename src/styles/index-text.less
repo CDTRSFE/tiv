@@ -1,0 +1,89 @@
+@import './common/resources.less';
+.t-index-text-bg(@name) {
+    background: url('../packages/index-text/images/@{name}.png') no-repeat center center / auto 100%;
+}
+.t-index-text {
+    .t-bsb();
+    display: inline-block;
+    text-align: center;
+    font-family: sans-serif;
+    &.t-type-1 {
+        min-width: 18px;
+        padding: 0 2px;
+        color: #2a2a2a;
+        line-height: 18px;
+        border-radius: 2px;
+        font-size: 14px;
+        background-color: #d2d6dc;
+        &.t-order-1 {
+            background-color: #f76280;
+            color: #fff;
+        }
+        &.t-order-2 {
+            background-color: #ff853d;
+            color: #fff;
+        }
+        &.t-order-3 {
+            background-color: #ffbe5c;
+            color: #fff;
+        }
+    }
+    &.t-type-2 {
+        min-width: 20px;
+        padding: 0 2px;
+        color: #0dc2da;
+        line-height: 18px;
+        font-size: 14px;
+        border: 1px solid #0dc2da;
+        background-color: #0a4f70;
+        &.t-order-1 {
+            border-color: #e16333;
+            background-color: #f7684b;
+            color: #fff;
+        }
+        &.t-order-2 {
+            border-color: #e18a33;
+            background-color: #f7b364;
+            color: #fff;
+        }
+        &.t-order-3 {
+            border-color: #008ad1;
+            background-color: #34b8e1;
+            color: #fff;
+        }
+    }
+    &.t-type-3 {
+        width: 65px;
+        padding: 0 2px;
+        line-height: 56px;
+        font-size: 18px;
+        color: #fff;
+        .t-index-text-bg('type-3-n');
+        &.t-checked {
+            .t-index-text-bg('type-3-active-n');
+        }
+        &.t-order-1,
+        &.t-order-2,
+        &.t-order-3 {
+            .t-index-text-bg('type-3-s');
+            &.t-checked {
+                .t-index-text-bg('type-3-active-s');
+            }
+        }
+    }
+    &.t-type-4 {
+        width: 18px;
+        height: 18px;
+        line-height: 18px;
+        color: #0dc2da;
+        font-size: 14px;
+        border-radius: 50%;
+        background: linear-gradient(to right, #1a65b7, #102d6b);
+        font-weight: bold;
+        &.t-order-1,
+        &.t-order-2,
+        &.t-order-3 {
+            background: linear-gradient(to right, #1cb989, #12486a);
+        }
+    }
+}

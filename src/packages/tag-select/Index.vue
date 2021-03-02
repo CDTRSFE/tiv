@@ -1,23 +1,23 @@
 <template>
-    <div :class="{all: expand}" class="t-tag-select">
-        <div class="wrap">
-            <ul ref="optionsEle" class="options">
-                <li v-if="multiple && checkAll" :class="{active: checkedAll}" class="tag" @click="handleCheckAll">{{ checkAllText }}</li>
+    <div :class="{'t-all': expand}" class="t-tag-select">
+        <div class="t-wrap">
+            <ul ref="optionsEle" class="t-options">
+                <li v-if="multiple && checkAll" :class="{'t-active': checkedAll}" class="t-tag" @click="handleCheckAll">{{ checkAllText }}</li>
                 <li
                     v-for="item in options"
                     :key="item.value"
-                    :class="{active: multiple && modelValue.includes(item.value) || !multiple && modelValue === item.value, disabled: item.disabled || disabled}"
-                    class="tag"
+                    :class="{'t-active': multiple && modelValue.includes(item.value) || !multiple && modelValue === item.value, 't-disabled': item.disabled || disabled}"
+                    class="t-tag"
                     @click.stop="handleCheck(item)"
                 >
                     {{ item.name }}
                 </li>
             </ul>
         </div>
-        <div v-if="foldable" class="expand-btn" @click="handleToggleExpand">
-            <span v-if="expand" class="text">{{ collapseText }}</span>
-            <span v-else class="text">{{ expandText }}</span>
-            <i :class="{up: expand}" class="icon tiv-font t-icon-arrow"></i>
+        <div v-if="foldable" class="t-expand-btn" @click="handleToggleExpand">
+            <span v-if="expand" class="t-text">{{ collapseText }}</span>
+            <span v-else class="t-text">{{ expandText }}</span>
+            <i :class="{'t-up': expand}" class="t-icon tiv-font t-icon-arrow"></i>
         </div>
     </div>
 </template>
@@ -155,70 +155,3 @@ export default defineComponent({
     },
 });
 </script>
-<style lang="less" scoped>
-@import '../../styles/resources.less';
-.t-tag-select {
-    .t-bsb();
-    display: flex;
-    height: 41px;
-    margin-bottom: -6px;
-    line-height: 20px;
-    font-size: 14px;
-    overflow: hidden;
-    &.all {
-        height: auto;
-        overflow: auto;
-    }
-}
-.wrap {
-    flex: 1;
-    margin-right: 6px;
-}
-.options {
-    .t-lsn();
-    .t-p0();
-    display: flex;
-    flex-wrap: wrap;
-}
-.tag {
-    padding: 6px 8px;
-    margin: 0 10px 10px 0;
-    border-radius: 3px;
-    cursor: pointer;
-    &:not(.active, .disabled):hover {
-        color: @theme-color;
-    }
-}
-.active {
-    background: @theme-color;
-    color: #fff;
-    &.disabled {
-        background: #f5f5f5;
-    }
-}
-.disabled {
-    color: #c0c4cc;
-    cursor: not-allowed;
-}
-.expand-btn {
-    .t-bsb();
-    display: flex;
-    flex-shrink: 0;
-    height: 32px;
-    padding: 6px 0;
-    color: @theme-color;
-    cursor: pointer;
-    user-select: none;
-}
-.text {
-    margin-right: 4px;
-}
-.icon {
-    .t-transition();
-    display: inline-block;
-    &.up {
-        transform: rotate(180deg);
-    }
-}
-
-</style>

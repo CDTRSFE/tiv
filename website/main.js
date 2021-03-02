@@ -4,6 +4,7 @@ import App from './App.vue';
 import 'github-markdown-css';
 import './styles/hljs.css';
 import './styles/common.less';
+import '@/styles/index.less';
 import Tiv from 'tiv';
 import DemoBlock from './components/DemoBlock.vue';
 import routes from './routes';

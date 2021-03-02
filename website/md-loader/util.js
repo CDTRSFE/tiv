@@ -51,12 +51,12 @@ function compileComponent(commentContent, id) {
     let styleTpl = '';
     if (style) {
         // 注入 less 资源文件，在 demo 中直接使用 less 变量和混入。
-        const url = path.resolve(__dirname, '../../src/styles/resources.less');
-        const resources = fs.readFileSync(url, 'utf-8');
+        const lessVar = fs.readFileSync(path.resolve(__dirname, '../../src/styles/common/var.less'), 'utf-8');
+        const lessMixin = fs.readFileSync(path.resolve(__dirname, '../../src/styles/common/mixin.less'), 'utf-8');
         // 为了方便，全部作为 less 处理
         styleTpl = compileStyle({
             id,
-            source: resources + style,
+            source: lessVar + lessMixin + style,
             filename: 'component-style',
             preprocessLang: 'less',
         }).code;
