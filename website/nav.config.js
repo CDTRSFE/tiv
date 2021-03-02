@@ -29,6 +29,10 @@ module.exports = [
             {
                 "name": "Overlay 遮罩层",
                 "path": "/overlay"
+            },
+            {
+                "name": "IndexText 索引号",
+                "path": "/index-text"
             }
         ]
     },

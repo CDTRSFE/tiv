@@ -7,6 +7,7 @@ import ClickOutside from '../click-outside';
 import Pagination from '../pagination';
 import NoData from '../no-data';
 import Overlay from '../overlay';
+import IndexText from '../index-text';
 
 const components = [
     ScaleView,
@@ -15,6 +16,7 @@ const components = [
     Pagination,
     NoData,
     Overlay,
+    IndexText,
 ];
 
 export default {
@@ -32,4 +34,5 @@ export {
     Pagination,
     NoData,
     Overlay,
+    IndexText,
 };

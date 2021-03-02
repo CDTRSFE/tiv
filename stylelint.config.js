@@ -4,7 +4,7 @@ module.exports = {
     rules: {
         // 忽略 ::v-deep
         'selector-pseudo-element-no-unknown': [true, {
-            ignorePseudoElements: ['v-deep'],
+            ignorePseudoElements: ['deep', 'slotted', 'global', '/^v-/'],
         }],
         'declaration-empty-line-before': 'never',
     },
