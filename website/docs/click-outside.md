@@ -7,7 +7,7 @@
 ```html
 <template>
     <div class="wrap center">
-        <div v-click-outside="clickOutside" class="item bg-blue" @click="clickSelf">{{ text }}</div>
+        <div v-click-outside="clickOutside" class="item bg-blue" @click="clickInside">{{ text }}</div>
     </div>
 </template>
 
@@ -15,16 +15,15 @@
 import { ref } from 'vue';
 
 export default {
-    name: 'ViewIndex',
     setup() {
         const text = ref('inside');
-        const clickSelf = () => {
+        const clickInside = () => {
             text.value = 'inside';
         }
         const clickOutside = () => {
             text.value = 'outside';
         };
-        return { text, clickSelf, clickOutside };
+        return { text, clickInside, clickOutside };
     },
 };
 </script>
