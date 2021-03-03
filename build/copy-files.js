@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const childProcess = require('child_process');
+// const childProcess = require('child_process');
 
 const pathRes = p => path.resolve(__dirname, p);
 
@@ -14,4 +14,5 @@ const newContent = fs.readFileSync(pathRes('../src/packages/tiv/index.ts'))
     .replace(/\.\.\//g, './');
 fs.writeFileSync(pathRes('../dist/lib/index.d.ts'), newContent);
 
-childProcess.spawn('cp', ['-r', 'src/packages', 'dist']);
+// publish.sh 有复制 packages 的操作
+// childProcess.spawn('cp', ['-r', 'src/packages', 'dist']);
