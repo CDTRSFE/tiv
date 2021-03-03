@@ -40,7 +40,18 @@ app.mount('#app')
 
 #### 按需引入
 
-可以借助 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) 只引入需要的组件，先安装 babel-plugin-import：
+1. 手动引入需要的组件，比如 TagSelect：
+
+```js
+import { createApp } from 'vue'
+import App from './App.vue'
+import TagSelect from 'tiv/lib/tag-select'
+import 'tiv/styles/tag-select.css'
+
+createApp(App).use(TagSelect).mount('#app')
+```
+
+2. 也可以借助 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) 只引入需要的组件，先安装 babel-plugin-import：
 
 ```shell
 $ npm install babel-plugin-import -D
@@ -64,7 +75,7 @@ module.exports = {
 }
 ```
 
-在 main.js 中引入需要的组件，比如 TagSelect。
+在 main.js 中引入需要的组件。
 
 ```js
 import { createApp } from 'vue'
@@ -86,4 +97,28 @@ app.mount('#app')
 + 所有组件在使用时需要加前缀，比如：`t-tag-select`。
 
 :::
+
+### 自定义主题
+
+Tiv 使用了 Less，变量文件是 `tiv/styles/common/var.less`，可以直接在项目中修改样式变量。首先新建一个文件，例如 `theme.less`，写入以下内容：
+
+```less
+@import 'tiv/styles/index.less';
+
+// 修改主题色
+@theme-color: #d64541;
+```
+
+然后，在项目的入口文件中， 直接引入 `theme.less`。
+
+```js
+import { createApp } from 'vue'
+import App from './App.vue'
+import Tiv from 'tiv'
+import './theme.less'
+
+createApp(App).use(Tiv).mount('#app')
+```
+
+
 
