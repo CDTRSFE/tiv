@@ -1,6 +1,6 @@
 module.exports = {
     extends: '@trscd/stylelint-config-tpconfig',
-    ignoreFiles: ['node_modules', 'dist/**/*', 'website/dist/**/*', 'website/styles/hljs.css'],
+    ignoreFiles: ['node_modules', 'dist/**/*', 'website/dist/**/*', 'website/styles/hljs.css', 'src/styles/common/iconfont.less'],
     rules: {
         // 忽略 ::v-deep
         'selector-pseudo-element-no-unknown': [true, {

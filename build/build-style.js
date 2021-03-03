@@ -34,5 +34,9 @@ function copyLess() {
 //     gulp.src('../src/styles/common/iconfont/fonts/*.*')
 //         .pipe(gulp.dest('../dist/styles/fonts'));
 // });
+function copyFont() {
+    return src('../src/styles/common/font/*')
+        .pipe(dest('../dist/styles/font'));
+}
 
-exports.build = series(compileLess, compileBaseLess, copyLess);
+exports.build = series(compileLess, compileBaseLess, copyLess, copyFont);
