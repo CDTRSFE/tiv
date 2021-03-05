@@ -4,6 +4,8 @@
 
 ### 基础用法
 
+数据通过 `option` 的 `data` 字段传入。默认情况下绑定了 `resize` 事件，窗口大小改变会调用 [echartsInstance.resize](https://echarts.apache.org/zh/api.html#echartsInstance.resize) 方法，设置属性 `:bind-resize="false"` 则不绑定。
+
 :::demo
 
 ```vue
@@ -140,9 +142,10 @@ export default {
 
 ### 属性
 
-| 参数   | 说明 | 类型   | 可选值 | 默认值 |
-| ------ | ---- | ------ | ------ | ------ |
-| option | 配置 | object | -      | -      |
+| 参数        | 说明                 | 类型    | 可选值       | 默认值 |
+| ----------- | -------------------- | ------- | ------------ | ------ |
+| option      | 配置                 | object  | -            | -      |
+| bind-resize | 是否绑定 resize 事件 | boolean | true / false | true   |
 
 ### 事件
 

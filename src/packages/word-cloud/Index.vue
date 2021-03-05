@@ -16,6 +16,10 @@ export default defineComponent({
             type: Object,
             default: () => ({}),
         },
+        bindResize: {
+            type: Boolean,
+            default: true,
+        },
     },
     emits: ['chart-created'],
     setup(props, ctx) {
@@ -64,7 +68,7 @@ export default defineComponent({
         };
 
         watch(props.option, setChart);
-        resizeEvent(() => {
+        props.bindResize && resizeEvent(() => {
             myChart.resize();
         }, 1000);
 
