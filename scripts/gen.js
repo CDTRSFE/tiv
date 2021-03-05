@@ -20,6 +20,7 @@ const upperCamelCase = require('uppercamelcase');
 const upperCaseName = upperCamelCase(name);
 const chineseName = process.argv[3] || name;
 const resourcePath = path.resolve(__dirname, '../src/packages/' + name);
+const stylesPath = path.resolve(__dirname, '../src/styles/' + name);
 const websitePath = path.resolve(__dirname, '../website');
 
 // todo fs.lstatSync(path).isDirectory()
@@ -66,12 +67,14 @@ export default defineComponent({
     },
 });
 </script>
-<style lang="less" scoped>
-@import '../../styles/resources.less';
+`,
+    },
+    {
+        fileName: `${stylesPath}/${name}.less`,
+        content: `@import './common/resources.less';
 .t-${name} {
     //
 }
-</style>
 `,
     },
     //     {

@@ -1,4 +1,3 @@
-// import './style.ts';
 import type { App } from 'vue';
 import ScaleView from '../scale-view';
 import Carousel from '../carousel';
@@ -8,6 +7,7 @@ import Pagination from '../pagination';
 import NoData from '../no-data';
 import Overlay from '../overlay';
 import IndexText from '../index-text';
+import WordCloud from '../word-cloud';
 
 const components = [
     ScaleView,
@@ -17,6 +17,7 @@ const components = [
     NoData,
     Overlay,
     IndexText,
+    WordCloud,
 ];
 
 export default {
@@ -35,4 +36,5 @@ export {
     NoData,
     Overlay,
     IndexText,
+    WordCloud,
 };

@@ -33,6 +33,10 @@ module.exports = [
             {
                 "name": "IndexText 索引号",
                 "path": "/index-text"
+            },
+            {
+                "name": "WordCloud 字符云",
+                "path": "/word-cloud"
             }
         ]
     },
