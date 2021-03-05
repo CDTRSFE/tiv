@@ -8,6 +8,7 @@ import NoData from '../no-data';
 import Overlay from '../overlay';
 import IndexText from '../index-text';
 import WordCloud from '../word-cloud';
+import TagCloud from '../tag-cloud';
 
 const components = [
     ScaleView,
@@ -18,6 +19,7 @@ const components = [
     Overlay,
     IndexText,
     WordCloud,
+    TagCloud,
 ];
 
 export default {
@@ -37,4 +39,5 @@ export {
     Overlay,
     IndexText,
     WordCloud,
+    TagCloud,
 };

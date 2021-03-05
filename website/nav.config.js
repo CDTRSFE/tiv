@@ -37,6 +37,10 @@ module.exports = [
             {
                 "name": "WordCloud 字符云",
                 "path": "/word-cloud"
+            },
+            {
+                "name": "TagCloud 标签云",
+                "path": "/tag-cloud"
             }
         ]
     },

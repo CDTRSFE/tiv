@@ -20,7 +20,7 @@ const upperCamelCase = require('uppercamelcase');
 const upperCaseName = upperCamelCase(name);
 const chineseName = process.argv[3] || name;
 const resourcePath = path.resolve(__dirname, '../src/packages/' + name);
-const stylesPath = path.resolve(__dirname, '../src/styles/' + name);
+const stylesPath = path.resolve(__dirname, '../src/styles');
 const websitePath = path.resolve(__dirname, '../website');
 
 // todo fs.lstatSync(path).isDirectory()
@@ -62,7 +62,7 @@ import { defineComponent } from 'vue';
 export default defineComponent({
     name: 'T${upperCaseName}',
     props: {},
-    setup(props) {
+    setup() {
         //
     },
 });
@@ -108,6 +108,12 @@ list.push({
 });
 fileSave(path.join(__dirname, '../website/nav.config.js'))
     .write(`module.exports = ${JSON.stringify(navConfig, null, 4)}\n`);
+
+// 引入 less 文件
+const lessIndexPath = path.join(__dirname, '../src/styles/index.less');
+const lessIndexContent = fs.readFileSync(lessIndexPath);
+fileSave(path.join(__dirname, '../website/nav.config.js'))
+    .write(`${lessIndexContent}\n@import './${name}.less';`);
 
 // eslint-disable-next-line
 console.log('\nDONE!\n');
