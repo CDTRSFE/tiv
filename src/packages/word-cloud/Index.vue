@@ -21,7 +21,7 @@ export default defineComponent({
             default: true,
         },
     },
-    emits: ['chart-created'],
+    emits: ['instance-created'],
     setup(props, ctx) {
         const chartEle = ref<HTMLElement>();
         let myChart: ECharts;
@@ -75,7 +75,7 @@ export default defineComponent({
         onMounted(() => {
             myChart = echarts.init(chartEle.value);
             setChart();
-            ctx.emit('chart-created', myChart);
+            ctx.emit('instance-created', myChart);
         });
         onBeforeUnmount(() => {
             myChart.dispose();

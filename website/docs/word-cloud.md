@@ -11,7 +11,7 @@
 ```vue
 <template>
     <div class="wrap">
-        <t-word-cloud :option="option" @chart-created="cb"></t-word-cloud>
+        <t-word-cloud :option="option" @instance-created="cb"></t-word-cloud>
     </div>
 </template>
 
@@ -149,7 +149,7 @@ export default {
 
 ### 事件
 
-| 名称          | 说明                   | 参数                                                         |
-| ------------- | ---------------------- | ------------------------------------------------------------ |
-| chart-created | echarts 实例创建后触发 | echarts 实例，用法见 [https://echarts.apache.org/zh/api.html#echartsInstance](https://echarts.apache.org/zh/api.html#echartsInstance) |
+| 名称             | 说明                   | 参数                                                         |
+| ---------------- | ---------------------- | ------------------------------------------------------------ |
+| instance-created | echarts 实例创建后触发 | echarts 实例，用法见 [https://echarts.apache.org/zh/api.html#echartsInstance](https://echarts.apache.org/zh/api.html#echartsInstance) |
 
