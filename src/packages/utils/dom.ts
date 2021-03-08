@@ -10,7 +10,7 @@ export const getStyle = (el: HTMLElement, styleName: string): string => {
     return window.getComputedStyle(el)[styleName];
 };
 
-export const setStyle = (el: HTMLElement, styleName: string, value?: string) => {
+export const setStyle = (el: HTMLElement, styleName: string | CSSStyleDeclaration, value?: string) => {
     /* https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/style#%E4%BE%8B%E5%AD%90
     * // 在单个语句中设置多个样式
     * elt.style.cssText = "color: blue; border: 1px solid black";
