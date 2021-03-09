@@ -6,7 +6,7 @@ import { defineComponent, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import * as echarts from 'echarts';
 import type { ECharts } from 'echarts';
 import 'echarts-wordcloud';
-import { resizeEvent } from '../hooks';
+import { windowResize, resizeEvent } from '../hooks';
 import merge from 'lodash/merge';
 
 export default defineComponent({
@@ -68,15 +68,16 @@ export default defineComponent({
         };
 
         watch(props.option, setChart);
-        props.bindResize && resizeEvent(() => {
-            myChart.resize();
-        }, 1000);
 
         onMounted(() => {
             myChart = echarts.init(chartEle.value);
             setChart();
             ctx.emit('instance-created', myChart);
+            props.bindResize && windowResize(myChart.resize, 1000);
         });
+        resizeEvent(chartEle, () => {
+            myChart.resize && myChart.resize();
+        }, 1000);
         onBeforeUnmount(() => {
             myChart.dispose();
         });

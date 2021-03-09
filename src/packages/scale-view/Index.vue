@@ -9,7 +9,7 @@
     </div>
 </template>
 <script lang='ts'>
-import { defineComponent, ref, onMounted, watch, nextTick } from 'vue';
+import { defineComponent, ref, watch, nextTick, onMounted } from 'vue';
 import { resizeEvent } from '../hooks';
 
 const defaultSize = '1920*1080';
@@ -45,13 +45,19 @@ export default defineComponent({
         const containerEle = ref<HTMLElement>(null);
         // 容器的宽高样式
         const containerStyle = ref({});
+        // 容器父级
+        const parentEle = ref<HTMLElement>();
+        // 根节点
+        let htmlEle: HTMLHtmlElement;
 
-        const setSize = async() => {
-            await nextTick();
-            const html = document.querySelector('html');
-            const parent = props.scaleBody ? html : containerEle.value.parentElement;
-            const wrapW = parent.clientWidth;
-            const wrapH = parent.clientHeight;
+        const setParentEle = () => {
+            htmlEle = document.querySelector('html');
+            parentEle.value = props.scaleBody ? htmlEle : containerEle.value.parentElement;
+        };
+
+        const setSize = () => {
+            const wrapW = parentEle.value.clientWidth;
+            const wrapH = parentEle.value.clientHeight;
             const size = resolveSize(props.baseSize);
             let ratio = 1;
             if (size.w / size.h > wrapW / wrapH) {
@@ -65,7 +71,7 @@ export default defineComponent({
             };
             if (props.scaleBody) {
                 containerStyle.value = style;
-                html.classList.add('t-flex');
+                htmlEle.classList.add('t-flex');
                 const bodyStyle = {
                     ...style,
                     flex: '0 0 auto',
@@ -83,9 +89,12 @@ export default defineComponent({
             show.value = true;
         };
 
-        onMounted(setSize);
-        watch(() => props.baseSize, setSize);
-        resizeEvent(setSize);
+        onMounted(setParentEle);
+        resizeEvent(parentEle, setSize);
+        watch(() => props.baseSize, async() => {
+            await nextTick();
+            setSize();
+        });
 
         return { show, containerEle, containerStyle, setSize };
     },

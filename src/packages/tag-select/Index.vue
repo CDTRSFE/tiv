@@ -1,5 +1,5 @@
 <template>
-    <div :class="{'t-all': expand}" class="t-tag-select">
+    <div ref="containerEle" :class="{'t-all': expand}" class="t-tag-select">
         <div class="t-wrap">
             <ul ref="optionsEle" class="t-options">
                 <li v-if="multiple && checkAll" :class="{'t-active': checkedAll}" class="t-tag" @click="handleCheckAll">{{ checkAllText }}</li>
@@ -100,8 +100,10 @@ export default defineComponent({
         // 是否需要折叠，宽度充足不显示
         const foldable = ref(false);
         const optionsEle = ref<HTMLElement>();
+        const containerEle = ref<HTMLElement>();
         const init = () => {
             if (props.expandable) {
+                if (!optionsEle.value) return;
                 const height = optionsEle.value.clientHeight;
                 const item = optionsEle.value.querySelector('li');
                 if (!item) {
@@ -120,8 +122,8 @@ export default defineComponent({
                 expand.value = true;
             }
         };
-        onMounted(init);
-        resizeEvent(init, 0);
+
+        props.expandable ? resizeEvent(containerEle, init, 0) : onMounted(init);
 
         // 选择全部
         const handleCheckAll = () => {
@@ -151,6 +153,7 @@ export default defineComponent({
             optionsEle,
             handleCheckAll,
             checkedAll,
+            containerEle,
         };
     },
 });
