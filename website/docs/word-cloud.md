@@ -4,7 +4,7 @@
 
 ### 基础用法
 
-数据通过 `option` 的 `data` 字段传入。默认情况下绑定了 `resize` 事件，窗口大小改变会调用 [echartsInstance.resize](https://echarts.apache.org/zh/api.html#echartsInstance.resize) 方法，设置属性 `:bind-resize="false"` 则不绑定。
+数据通过 `option` 的 `data` 字段传入。
 
 :::demo
 
@@ -46,6 +46,14 @@ export default {
 </style>
 
 ```
+
+:::
+
+:::tip
+
+组件内部监听了组件根节点内容区域的改变，能在宽高变化后，自动调用  [echartsInstance.resize](https://echarts.apache.org/zh/api.html#echartsInstance.resize) 方法。
+
+默认情况下也绑定了 [resize](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/resize_event) 事件，窗口大小改变会调用 [echartsInstance.resize](https://echarts.apache.org/zh/api.html#echartsInstance.resize) 方法，设置属性 `:bind-resize="false"` 则不绑定。
 
 :::
 
