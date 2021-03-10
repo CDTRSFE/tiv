@@ -38,7 +38,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iamzhaoqing/tiv.git"
+    "url": "git+https://github.com/CDTRSFE/tiv.git"
   },
   "keywords": [
     "vue"
@@ -46,9 +46,9 @@
   "author": "zhaoqing",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/iamzhaoqing/tiv/issues"
+    "url": "https://github.com/CDTRSFE/tiv/issues"
   },
-  "homepage": "https://github.com/iamzhaoqing/tiv#readme",
+  "homepage": "https://github.com/CDTRSFE/tiv#readme",
   "peerDependencies": {
     "vue": "^3.0.5"
   },

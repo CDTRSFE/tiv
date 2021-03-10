@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://iamzhaoqing.github.io/tiv">
+  <a href="https://CDTRSFE.github.io/tiv">
     <img width="150" src="./website/images/tiv-logo.png" />
   </a>
 </p>
@@ -36,7 +36,7 @@ createApp().use(Tiv).mount('#app');
 拉取代码到本地，并安装依赖
 
 ```shell
-$ git clone git@github.com:iamzhaoqing/tiv.git
+$ git clone git@github.com:CDTRSFE/tiv.git
 $ cd tiv
 $ npm install
 ```

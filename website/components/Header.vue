@@ -31,7 +31,7 @@ export default {
                 },
                 {
                     name: 'GitHub',
-                    path: 'https://github.com/iamzhaoqing/tiv',
+                    path: 'https://github.com/CDTRSFE/tiv',
                     blank: true,
                 },
             ],
