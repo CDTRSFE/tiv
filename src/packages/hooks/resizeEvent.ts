@@ -1,4 +1,4 @@
-import { isRef, watch, onUnmounted } from 'vue';
+import { isRef, nextTick, onUnmounted } from 'vue';
 import type { Ref } from 'vue';
 import debounce from 'lodash/debounce';
 import ResizeObserver from 'resize-observer-polyfill';
@@ -41,14 +41,9 @@ export default async(element: HTMLElement | Ref<HTMLElement>, fn: () => void, ti
     };
 
     if (isRef(element)) {
-        if (element.value) {
+        // 保证节点存在
+        nextTick(() => {
             el = element.value as ResizableElement;
-            handle();
-            return;
-        }
-        const unwatch = watch(element, (val) => {
-            el = val as ResizableElement;
-            unwatch();
             handle();
         });
     } else {

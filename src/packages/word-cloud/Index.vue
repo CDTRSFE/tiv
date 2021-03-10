@@ -75,8 +75,11 @@ export default defineComponent({
             ctx.emit('instance-created', myChart);
             props.bindResize && windowResize(myChart.resize, 1000);
         });
+        let once = true;
         resizeEvent(chartEle, () => {
-            myChart.resize && myChart.resize();
+            // 第一次不需调用 resize
+            !once && myChart.resize();
+            once = false;
         }, 1000);
         onBeforeUnmount(() => {
             myChart.dispose();

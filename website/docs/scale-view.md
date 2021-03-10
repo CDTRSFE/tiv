@@ -33,7 +33,7 @@
         {{ item.name }}
     </button>
     <div :style="{height}" class="bg-data-v wrap">
-        <t-scale-view ref="scaleCom" base-size="400*220" class="com">
+        <t-scale-view base-size="400*220" class="com">
             <div class="content h100">
                 <t-no-data></t-no-data>
             </div>
@@ -61,18 +61,13 @@ export default {
             },
         ]);
         const height = ref('200px');
-        const scaleCom = ref();
-
         const handleChange = (v) => {
             height.value = v;
-            // .wrap 有 0.3s 的动画
-            setTimeout(scaleCom.value.setSize, 300);
         };
 
         return {
             btns,
             height,
-            scaleCom,
             handleChange,
         };
     },
