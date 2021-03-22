@@ -1,6 +1,9 @@
 <template>
     <div class="side-nav">
-        <input v-model="searchKey" type="text" class="search-inp" placeholder="搜索" />
+        <div class="search-box">
+            <input v-model="searchKey" type="text" class="search-inp" placeholder="搜索" />
+            <span v-show="searchKey !== ''" class="clear-icon" @click="searchKey = ''">×</span>
+        </div>
         <ul class="list">
             <li v-for="item in list" :key="item.path" class="item">
                 <p
@@ -10,15 +13,20 @@
                 >
                     {{ item.name }}
                 </p>
-                <ul v-if="item.children" class="sub-nav">
+                <ul v-if="item.children.length" class="sub-nav">
                     <li v-for="v in item.children" :key="v.path">
-                        <p
+                        <div
                             :class="{active: baseUrl + v.path === path}"
                             class="sub-name link"
                             @click="toPage(v.path)"
                         >
-                            {{ v.name }}
-                        </p>
+                            <template v-if="v.resultName">
+                                <p v-for="(n, i) in v.resultName" :key="i" class="result-name">
+                                    <pre>{{ n }}</pre><pre v-if="i < v.resultName.length - 1" class="result-key">{{ searchKey }}</pre>
+                                </p>
+                            </template>
+                            <span v-else>{{ v.name }}</span>
+                        </div>
                     </li>
                 </ul>
             </li>
@@ -33,7 +41,6 @@ export default {
     name: 'SideNav',
     data() {
         return {
-            list: nav,
             path: '',
             searchKey: '',
         };
@@ -41,6 +48,18 @@ export default {
     computed: {
         baseUrl() {
             return this.$route.meta.baseUrl;
+        },
+        list() {
+            const key = this.searchKey;
+            return nav.map(item => ({
+                ...item,
+                children: (item.children || [])
+                    .filter(v => key === '' || v.name.includes(key))
+                    .map(v => key === '' ? v : {
+                        ...v,
+                        resultName: v.name.split(key),
+                    }),
+            }));
         },
     },
     created() {
@@ -55,6 +74,7 @@ export default {
             this.$router.push({
                 path,
             });
+            this.searchKey = '';
         },
     },
 };
@@ -68,11 +88,15 @@ export default {
     height: calc(100% - 40px);
     margin: 20px 0;
 }
+.search-box {
+    position: relative;
+    width: calc(100% - 20px);
+    margin: 0 10px 10px;
+}
 .search-inp {
     display: inline-block;
-    width: calc(100% - 20px);
+    width: 100%;
     padding: 4px 10px;
-    margin: 0 10px 10px;
     line-height: 29px;
     color: @theme-color;
     // border: 1px solid tint(@link-color, 70%);
@@ -82,6 +106,18 @@ export default {
     outline: none;
     box-sizing: border-box;
     &::placeholder {
+        color: @theme-color;
+    }
+}
+.clear-icon {
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 14px);
+    font-size: 24px;
+    line-height: 1;
+    color: tint(@theme-color, 20%);
+    cursor: pointer;
+    &:hover {
         color: @theme-color;
     }
 }
@@ -103,8 +139,15 @@ export default {
     color: @text-color;
     font-size: 14px;
 }
-.sub-nav .sub-name {
-    // padding-left: 26px;
+.result-name {
+    display: inline-block;
+    pre {
+        display: inline-block;
+        margin: 0;
+    }
+}
+.result-key {
+    color: orange;
 }
 .link {
     &:hover {
