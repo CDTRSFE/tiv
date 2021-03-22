@@ -1,0 +1,102 @@
+@import './common/resources.less';
+.t-digit-card {
+    display: inline-flex;
+    .t-slide-item {
+        height: 100%;
+        font-size: 16px;
+        overflow: hidden;
+        .t-text-box {
+            .t-m0();
+            display: inline-flex;
+            position: relative;
+        }
+        .t-text {
+            display: inline-block;
+            min-width: 1em;
+            line-height: 1.4em;
+            text-align: center;
+            .t-bsb();
+        }
+        .t-new {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+        .t-up {
+            transform: translateY(-100%);
+        }
+        .t-down {
+            transform: translateY(100%);
+        }
+    }
+    .t-flip-item {
+        position: relative;
+        // height: 100%;
+        font-size: 16px;
+        .t-text-box {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 50%;
+            overflow: hidden;
+            .t-m0();
+            .t-bsb();
+        }
+        .t-text-copy {
+            opacity: 0;
+            .t-m0();
+        }
+        .t-text {
+            display: inline-block;
+            min-width: 1em;
+            text-align: center;
+            background-color: #fff;
+        }
+        .t-old-bottom,
+        .t-new-bottom {
+            align-items: flex-end;
+            top: 50%;
+            bottom: 0;
+        }
+        .t-old-top {
+            transform: rotateX(0);
+            transform-origin: 50% 100%;
+            backface-visibility: hidden;
+            z-index: 2;
+        }
+        .t-new-bottom {
+            transform: rotateX(180deg);
+            transform-origin: 50% 0;
+            backface-visibility: hidden;
+        }
+        .t-flip-old {
+            transform: rotateX(-180deg);
+            transition: transform @duration;
+        }
+        .t-flip-new {
+            transform: rotateX(0);
+            transition: transform @duration;
+        }
+        @duration: 0.8s;
+    }
+    .flip-in {
+        position: relative;
+        height: 100%;
+        font-size: 16px;
+        .t-text-old,
+        .t-text-new {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background: #fff;
+        }
+        .t-text-copy {
+            opacity: 0;
+        }
+    }
+}

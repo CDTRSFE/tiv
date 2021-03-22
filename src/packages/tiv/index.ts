@@ -9,6 +9,7 @@ import Overlay from '../overlay';
 import IndexText from '../index-text';
 import WordCloud from '../word-cloud';
 import TagCloud from '../tag-cloud';
+import DigitCard from '../digit-card';
 
 const components = [
     ScaleView,
@@ -20,6 +21,7 @@ const components = [
     IndexText,
     WordCloud,
     TagCloud,
+    DigitCard,
 ];
 
 export default {
@@ -40,4 +42,5 @@ export {
     IndexText,
     WordCloud,
     TagCloud,
+    DigitCard,
 };

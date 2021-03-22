@@ -1,6 +1,6 @@
 if (!process.argv[2] || !process.argv[3]) {
     // eslint-disable-next-line
-    console.error('Usage: npm run gen <name> <chinese name>\n');
+    console.error('Usage: npm run gen <component-name> <chinese name>\n');
     process.exit(1);
 }
 
@@ -112,8 +112,16 @@ fileSave(path.join(__dirname, '../website/nav.config.js'))
 // 引入 less 文件
 const lessIndexPath = path.join(__dirname, '../src/styles/index.less');
 const lessIndexContent = fs.readFileSync(lessIndexPath);
-fileSave(path.join(__dirname, '../website/nav.config.js'))
-    .write(`${lessIndexContent}\n@import './${name}.less';`);
+fileSave(lessIndexPath)
+    .write(`${lessIndexContent}\n@import './${name}.less';\n`);
+
+// 引入组件
+const indexPath = path.join(__dirname, '../src/packages/tiv/index.ts');
+const indexContent = fs.readFileSync(indexPath)
+    .replace(/(\r?\nconst components)/, `import ${upperCaseName} from '../${name}';\n$1`)
+    .replace(/(\r?\nconst components = \[[^\]]+)/, `$1    ${upperCaseName},\n`)
+    .replace(/(\r?\nexport {[^}]+)/, `$1    ${upperCaseName},\n`);
+fileSave(indexPath).write(indexContent);
 
 // eslint-disable-next-line
 console.log('\nDONE!\n');

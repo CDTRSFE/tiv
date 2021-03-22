@@ -41,6 +41,10 @@ module.exports = [
             {
                 "name": "TagCloud 标签云",
                 "path": "/tag-cloud"
+            },
+            {
+                "name": "DigitCard 数字卡片",
+                "path": "/digit-card"
             }
         ]
     },
