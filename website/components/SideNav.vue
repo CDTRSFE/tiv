@@ -13,19 +13,10 @@
                 >
                     {{ item.name }}
                 </p>
-                <ul v-if="item.children.length" class="sub-nav">
+                <ul v-if="item.children" class="sub-nav">
                     <li v-for="v in item.children" :key="v.path">
-                        <div
-                            :class="{active: baseUrl + v.path === path}"
-                            class="sub-name link"
-                            @click="toPage(v.path)"
-                        >
-                            <template v-if="v.resultName">
-                                <p v-for="(n, i) in v.resultName" :key="i" class="result-name">
-                                    <pre>{{ n }}</pre><pre v-if="i < v.resultName.length - 1" class="result-key">{{ searchKey }}</pre>
-                                </p>
-                            </template>
-                            <span v-else>{{ v.name }}</span>
+                        <div :class="{active: baseUrl + v.path === path}" class="sub-name link" @click="toPage(v.path)">
+                            <span class="result-name" v-html="v.resultName || v.name"></span>
                         </div>
                     </li>
                 </ul>
@@ -51,15 +42,22 @@ export default {
         },
         list() {
             const key = this.searchKey;
-            return nav.map(item => ({
-                ...item,
-                children: (item.children || [])
-                    .filter(v => key === '' || v.name.includes(key))
-                    .map(v => key === '' ? v : {
-                        ...v,
-                        resultName: v.name.split(key),
-                    }),
-            }));
+            if (key === '') return nav;
+            return nav.map(item => {
+                if (!item.children) return item;
+                return {
+                    ...item,
+                    children: item.children
+                        .filter(v => v.name.match(this.regExp))
+                        .map(v => ({
+                            ...v,
+                            resultName: v.name.replace(this.regExp, str => `<span class="result-key">${str}</span>`),
+                        })),
+                };
+            });
+        },
+        regExp() {
+            return new RegExp(this.searchKey, 'i');
         },
     },
     created() {
@@ -141,13 +139,10 @@ export default {
 }
 .result-name {
     display: inline-block;
-    pre {
-        display: inline-block;
-        margin: 0;
+    white-space: pre;
+    ::v-deep(.result-key) {
+        color: orange;
     }
-}
-.result-key {
-    color: orange;
 }
 .link {
     &:hover {
