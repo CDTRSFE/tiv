@@ -111,13 +111,13 @@ fileSave(path.join(__dirname, '../website/nav.config.js'))
 
 // 引入 less 文件
 const lessIndexPath = path.join(__dirname, '../src/styles/index.less');
-const lessIndexContent = fs.readFileSync(lessIndexPath);
+const lessIndexContent = fs.readFileSync(lessIndexPath, 'utf8');
 fileSave(lessIndexPath)
-    .write(`${lessIndexContent}\n@import './${name}.less';\n`);
+    .write(`${lessIndexContent}@import './${name}.less';\n`);
 
 // 引入组件
 const indexPath = path.join(__dirname, '../src/packages/tiv/index.ts');
-const indexContent = fs.readFileSync(indexPath)
+const indexContent = fs.readFileSync(indexPath, 'utf8')
     .replace(/(\r?\nconst components)/, `import ${upperCaseName} from '../${name}';\n$1`)
     .replace(/(\r?\nconst components = \[[^\]]+)/, `$1    ${upperCaseName},\n`)
     .replace(/(\r?\nexport {[^}]+)/, `$1    ${upperCaseName},\n`);
