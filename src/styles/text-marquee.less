@@ -1,0 +1,24 @@
+@import './common/resources.less';
+.full-box() {
+    width: 100%;
+    height: 100%;
+}
+.t-text-marquee {
+    .full-box();
+    .t-text-marquee-wrap {
+        .full-box();
+    }
+    .t-text-marquee-list {
+        .t-lsn();
+        .t-m0();
+        .t-p0();
+        .full-box();
+        // overflow: hidden;
+    }
+    .t-scroll-bar {
+        white-space: nowrap;
+    }
+    .t-text-item {
+        cursor: pointer;
+    }
+}

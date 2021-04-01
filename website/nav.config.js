@@ -45,6 +45,10 @@ module.exports = [
             {
                 "name": "DigitCard 数字卡片",
                 "path": "/digit-card"
+            },
+            {
+                "name": "TextMarquee 文字跑马灯",
+                "path": "/text-marquee"
             }
         ]
     },
