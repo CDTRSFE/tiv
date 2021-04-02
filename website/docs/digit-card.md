@@ -114,7 +114,55 @@ export default {
 <style lang="less">
     .demo-2 {
         .t-flip-item {
+            font-size: 26px;
+        }
+    }
+</style>
+
+```
+
+:::
+
+:::demo
+
+```html
+<template>
+    <t-digit-card :data="time" type="flip" class="demo-3"></t-digit-card>
+</template>
+
+<script>
+import { ref, onUnmounted } from 'vue';
+
+export default {
+    setup() {
+        const time = ref('');
+        const addZero = n => n < 10 ? '0' + n : n;
+        const setTime = () => {
+            const now = new Date();
+            const h = now.getHours();
+            const m = now.getMinutes();
+            const s = now.getSeconds();
+            time.value = addZero(h) + ':' + addZero(m) + ':' + addZero(s);
+        };
+        setTime();
+        const timer = setInterval(setTime, 1000);
+        onUnmounted(() => clearInterval(timer));
+
+        return { time };
+    },
+};
+</script>
+<style lang="less">
+    .demo-3 {
+        padding: 10px;
+        background: #030d2a;
+        .t-flip-item {
             font-size: 32px;
+            margin: 0 4px;
+        }
+        .t-text {
+            color: #fff;
+            background: #030d2a url('*/images/digit-card-bg.png') no-repeat center center / 100% 100%;
         }
     }
 </style>
