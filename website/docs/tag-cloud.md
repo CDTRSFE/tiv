@@ -59,7 +59,10 @@ export default {
 };
 </script>
 
-<style scoped lang="less">
+<style lang="less">
+.tags {
+    background: #071132 url(*/images/tag-cloud-bg.png) no-repeat center center / 100%;
+}
 .tags .tag-cloud-item {
     font-size: 28px;
     cursor: pointer;
