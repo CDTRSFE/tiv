@@ -11,6 +11,7 @@ import WordCloud from '../word-cloud';
 import TagCloud from '../tag-cloud';
 import DigitCard from '../digit-card';
 import TextMarquee from '../text-marquee';
+import ImgHotspot from '../img-hotspot';
 
 const components = [
     ScaleView,
@@ -24,6 +25,7 @@ const components = [
     TagCloud,
     DigitCard,
     TextMarquee,
+    ImgHotspot,
 ];
 
 export default {
@@ -46,4 +48,5 @@ export {
     TagCloud,
     DigitCard,
     TextMarquee,
+    ImgHotspot,
 };

@@ -49,6 +49,10 @@ module.exports = [
             {
                 "name": "TextMarquee 文字跑马灯",
                 "path": "/text-marquee"
+            },
+            {
+                "name": "ImgHotspot 图片热区",
+                "path": "/img-hotspot"
             }
         ]
     },
