@@ -16,10 +16,10 @@
     </div>
 </template>
 <script lang='ts'>
-import { computed, defineComponent, onMounted, PropType, ref, watch } from 'vue';
+import { defineComponent, onMounted, PropType, ref, watch } from 'vue';
 
 interface HotspotType {
-    coords?: string
+    path: string
     cover: boolean
     [key: string]: any
 }
@@ -29,14 +29,12 @@ interface CoordsType {
     data: HotspotType
 }
 
-const defaultOption = {
-    coordsPropName: 'coords',
-    setCoords: (coords:string, width: number, height: number, originW?: number, originH?: number) => {
-        return (coords || '').split(',').map((v, index) => {
-            const val = Number(v);
-            return index % 2 === 0 ? val / originW * width : val / originH * height;
-        }).join(',');
-    },
+// 传入的坐标是相对于原图的
+const setCoords = (coords:string, width: number, height: number, originW: number, originH: number) => {
+    return (coords || '').split(',').map((v, index) => {
+        const val = Number(v);
+        return index % 2 === 0 ? val / originW * width : val / originH * height;
+    }).join(',');
 };
 
 export default defineComponent({
@@ -54,40 +52,29 @@ export default defineComponent({
             type: String,
             default: 'rgba(71,134,255,0.2)',
         },
-        options: {
-            type: Object as PropType<typeof defaultOption>,
-            default: () => ({}),
-        },
     },
     emits: ['area-hover', 'area-click'],
     setup(props) {
-        const options = computed(() => {
-            return Object.assign({}, defaultOption, props.options);
-        });
-
         const imageEle = ref<HTMLImageElement>();
         let imgWidth = 0;
         let imgHeight = 0;
         const coordsList = ref<CoordsType[]>();
 
-        const init = () => {
-            const k = options.value.coordsPropName;
-            imageEle.value.onload = function() {
-                imgWidth = imageEle.value.width;
-                imgHeight = imageEle.value.height;
+        const loadFn = () => {
+            imgWidth = imageEle.value.width;
+            imgHeight = imageEle.value.height;
 
-                const img = new Image();
-                img.src = props.image;
-                img.onload = () => {
-                    coordsList.value = props.hotspots.map(data => {
-                        const points = options.value.setCoords(data[k], imgWidth, imgHeight, img.width, img.height) || '';
-                        return {
-                            points,
-                            data,
-                        };
-                    });
-                    drawCover();
-                };
+            const img = new Image();
+            img.src = props.image;
+            img.onload = () => {
+                coordsList.value = props.hotspots.map(data => {
+                    const points = setCoords(data.path, imgWidth, imgHeight, img.width, img.height) || '';
+                    return {
+                        points,
+                        data,
+                    };
+                });
+                drawCover();
             };
         };
 
@@ -115,8 +102,10 @@ export default defineComponent({
             ctx.stroke();
         };
 
-        onMounted(init);
-        watch(() => props.hotspots, init);
+        onMounted(() => {
+            imageEle.value.onload = loadFn;
+        });
+        watch(() => props.hotspots, loadFn);
 
         return {
             imageEle,
