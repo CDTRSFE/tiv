@@ -43,8 +43,8 @@ module.exports = [
                 "path": "/tag-cloud"
             },
             {
-                "name": "DigitCard 数字卡片",
-                "path": "/digit-card"
+                "name": "CountCard 数字卡片",
+                "path": "/count-card"
             },
             {
                 "name": "TextMarquee 文字跑马灯",

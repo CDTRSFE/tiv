@@ -1,10 +1,15 @@
 @import './common/resources.less';
-.t-digit-card {
+.t-count-card {
     display: inline-flex;
+    text-align: center;
+    font-size: 16px;
+}
+.t-val {
+    display: inline-block;
+    width: 1em;
 }
 .t-slide-item {
     height: 100%;
-    font-size: 16px;
     overflow: hidden;
     .t-text-box {
         .t-m0();
@@ -13,9 +18,6 @@
     }
     .t-text {
         display: inline-block;
-        min-width: 1em;
-        line-height: 1.4em;
-        text-align: center;
         .t-bsb();
     }
     .t-new {
@@ -32,8 +34,6 @@
 }
 .t-flip-item {
     position: relative;
-    font-size: 16px;
-    perspective: 100px;
     .t-text-box {
         display: flex;
         justify-content: center;
@@ -53,7 +53,6 @@
     }
     .t-text {
         display: inline-block;
-        min-width: 1em;
         text-align: center;
         background: #fff;
     }

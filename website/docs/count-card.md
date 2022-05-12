@@ -6,11 +6,11 @@
 
 默认使用滑动切换效果（type="slide"）。
 
-:::demo
+:::demo data 值可以是字符串，数字部分有切换效果。
 
 ```html
 <template>
-    <t-digit-card :data="time"></t-digit-card>
+    <t-count-card :data="time"></t-count-card>
 </template>
 
 <script>
@@ -44,7 +44,7 @@ export default {
 
 ```html
 <template>
-    <t-digit-card :data="num" class="demo-1"></t-digit-card>
+    <t-count-card :data="num" class="demo-1"></t-count-card>
 </template>
 
 <script>
@@ -86,7 +86,7 @@ export default {
 
 ```html
 <template>
-    <t-digit-card :data="time" type="flip" class="demo-2"></t-digit-card>
+    <t-count-card :data="time" type="flip" class="demo-2"></t-count-card>
 </template>
 
 <script>
@@ -113,9 +113,7 @@ export default {
 </script>
 <style lang="less">
     .demo-2 {
-        .t-flip-item {
-            font-size: 26px;
-        }
+        font-size: 26px;
     }
 </style>
 
@@ -127,7 +125,7 @@ export default {
 
 ```html
 <template>
-    <t-digit-card :data="time" type="flip" class="demo-3"></t-digit-card>
+    <t-count-card :data="time" type="flip" class="demo-3"></t-count-card>
 </template>
 
 <script>
@@ -156,19 +154,66 @@ export default {
     .demo-3 {
         padding: 10px;
         background: #030d2a;
+        font-size: 32px;
         .t-flip-item {
-            font-size: 32px;
             margin: 0 4px;
         }
         .t-text {
             color: #fff;
-            background: #030d2a url('*/images/digit-card-bg.png') no-repeat center center / 100% 100%;
+            background: #030d2a url('*/images/count-card-bg.png') no-repeat center center / 100% 100%;
         }
     }
 </style>
 
 ```
 
+:::
+
+### 使用插槽
+
+可以自定义显示内容。
+
+:::demo
+
+```html
+<template>
+    <t-count-card :data="num" class="demo-4" v-slot="{ v }">
+        <span :class="v < 5 ? 'blue' : 'green'" class="num">{{ v }}</span>
+    </t-count-card>
+</template>
+
+<script>
+import { ref, onUnmounted } from 'vue';
+
+export default {
+    setup() {
+        const num = ref('3928196');
+        const timer = setInterval(() => {
+            num.value = (Math.random() + '').slice(2, 8);
+        }, 1000);
+        onUnmounted(() => clearInterval(timer));
+
+        return { num };
+    },
+};
+</script>
+<style lang="less">
+    .demo-4 {
+        /* font-size: 16px; */
+        .blue {
+            color: rgb(84, 158, 230);
+        }
+        .green {
+            color: rgb(117, 230, 117);
+        }
+        .num {
+            display: inline-block;
+            font-size: 30px;
+            width: 0.8em;
+        }
+    }
+</style>
+```
 :::
 
 ### 属性
@@ -178,3 +223,9 @@ export default {
 | data | 需要显示的数据 | string / number | -            | -      |
 | type | 切换类型       | string          | slide / filp | slide  |
 
+
+### Slot 属性
+
+| 参数 | 说明           | 类型            |
+| ---- | -------------- | --------------- |
+| v | 单个字符 | string |

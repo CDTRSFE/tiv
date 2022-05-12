@@ -1,20 +1,40 @@
 <template>
     <div ref="flipEle" class="t-flip-item">
-        <p ref="oldEle" class="t-text-box t-old-top">
-            <span class="t-text">{{ oldText }}</span>
-        </p>
-        <p class="t-text-box t-old-bottom">
-            <span class="t-text">{{ oldText }}</span>
-        </p>
-        <p class="t-text-box t-new-top">
-            <span class="t-text">{{ newText }}</span>
-        </p>
-        <p ref="newEle" class="t-text-box t-new-bottom">
-            <span class="t-text">{{ newText }}</span>
-        </p>
-        <p class="t-text-copy">
-            <span class="t-text">{{ oldText }}</span>
-        </p>
+        <div ref="oldEle" class="t-text-box t-old-top">
+            <div class="t-text">
+                <slot :v="oldText">
+                    <span class="t-val">{{ oldText }}</span>
+                </slot>
+            </div>
+        </div>
+        <div class="t-text-box t-old-bottom">
+            <div class="t-text">
+                <slot :v="oldText">
+                    <span class="t-val">{{ oldText }}</span>
+                </slot>
+            </div>
+        </div>
+        <div class="t-text-box t-new-top">
+            <div class="t-text">
+                <slot :v="newText">
+                    <span class="t-val">{{ newText }}</span>
+                </slot>
+            </div>
+        </div>
+        <div ref="newEle" class="t-text-box t-new-bottom">
+            <div class="t-text">
+                <slot :v="newText">
+                    <span class="t-val">{{ newText }}</span>
+                </slot>
+            </div>
+        </div>
+        <div class="t-text-copy">
+            <div class="t-text">
+                <slot :v="oldText">
+                    <span class="t-val">{{ oldText }}</span>
+                </slot>
+            </div>
+        </div>
     </div>
 </template>
 

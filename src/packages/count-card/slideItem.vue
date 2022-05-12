@@ -1,11 +1,27 @@
 <template>
     <div class="t-slide-item">
-        <p v-if="/\d/.test(data)" ref="boxEle" class="t-text-box">
-            <span class="t-text t-new t-up">{{ newText }}</span>
-            <span class="t-text t-old">{{ oldText }}</span>
-            <span class="t-text t-new t-down">{{ newText }}</span>
-        </p>
-        <span v-else class="t-text">{{ data }}</span>
+        <div v-if="/\d/.test(data)" ref="boxEle" class="t-text-box">
+            <div class="t-text t-new t-up">
+                <slot :v="newText">
+                    <span class="t-val">{{ newText }}</span>
+                </slot>
+            </div>
+            <div class="t-text t-old">
+                <slot :v="oldText">
+                    <span class="t-val">{{ oldText }}</span>
+                </slot>
+            </div>
+            <div class="t-text t-new t-down">
+                <slot :v="newText">
+                    <span class="t-val">{{ newText }}</span>
+                </slot>
+            </div>
+        </div>
+        <div v-else class="t-text t-not-num">
+            <slot :v="data">
+                <span class="t-val">{{ data }}</span>
+            </slot>
+        </div>
     </div>
 </template>
 

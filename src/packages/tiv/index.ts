@@ -9,7 +9,7 @@ import Overlay from '../overlay';
 import IndexText from '../index-text';
 import WordCloud from '../word-cloud';
 import TagCloud from '../tag-cloud';
-import DigitCard from '../digit-card';
+import CountCard from '../count-card';
 import TextMarquee from '../text-marquee';
 import ImgHotspot from '../img-hotspot';
 
@@ -23,7 +23,7 @@ const components = [
     IndexText,
     WordCloud,
     TagCloud,
-    DigitCard,
+    CountCard,
     TextMarquee,
     ImgHotspot,
 ];
@@ -46,7 +46,7 @@ export {
     IndexText,
     WordCloud,
     TagCloud,
-    DigitCard,
+    CountCard,
     TextMarquee,
     ImgHotspot,
 };

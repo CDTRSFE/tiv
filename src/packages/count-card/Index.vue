@@ -1,7 +1,9 @@
 <template>
-    <div class="t-digit-card">
+    <div class="t-count-card">
         <template v-for="(t, i) in textArr" :key="i">
-            <component :is="type + '-item'" :data="t"></component>
+            <component :is="type + '-item'" v-slot="{ v }" :data="t">
+                <slot :v="v"></slot>
+            </component>
         </template>
     </div>
 </template>
@@ -14,7 +16,7 @@ import FlipItem from './flipItem.vue';
 type NameType = 'slide' | 'flip';
 
 export default defineComponent({
-    name: 'TDigitCard',
+    name: 'TCountCard',
     components: {
         SlideItem,
         FlipItem,
