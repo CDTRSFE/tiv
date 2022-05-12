@@ -2,7 +2,7 @@
     <div class="t-count-card">
         <template v-for="(t, i) in textArr" :key="i">
             <component :is="type + '-item'" v-slot="{ v }" :data="t">
-                <slot :v="v"></slot>
+                <slot :val="v" :index="i"></slot>
             </component>
         </template>
     </div>

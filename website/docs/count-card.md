@@ -177,8 +177,8 @@ export default {
 
 ```html
 <template>
-    <t-count-card :data="num" class="demo-4" v-slot="{ v }">
-        <span :class="v < 5 ? 'blue' : 'green'" class="num">{{ v }}</span>
+    <t-count-card :data="num" class="demo-4" v-slot="{ val }">
+        <span :class="val < 5 ? 'blue' : 'green'" class="num">{{ val }}</span>
     </t-count-card>
 </template>
 
@@ -228,4 +228,5 @@ export default {
 
 | 参数 | 说明           | 类型            |
 | ---- | -------------- | --------------- |
-| v | 单个字符 | string |
+| val | 单个字符的值 | string |
+| index | 单个字符的索引 | number |
